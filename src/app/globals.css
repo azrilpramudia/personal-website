@@ -1,26 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Catppuccin Macchiato — Tailwind v4 custom theme
+   Di v4, semua config ditulis langsung di CSS pakai @theme
+   ============================================================ */
+@theme {
+  /* Fonts */
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Macchiato Backgrounds */
+  --color-macchiato-base: #24273a;
+  --color-macchiato-mantle: #1e2030;
+  --color-macchiato-crust: #181926;
+
+  /* Macchiato Surfaces */
+  --color-macchiato-surface0: #363a4f;
+  --color-macchiato-surface1: #494d64;
+  --color-macchiato-surface2: #5b6078;
+
+  /* Macchiato Overlays */
+  --color-macchiato-overlay0: #6e738d;
+  --color-macchiato-overlay1: #8087a2;
+  --color-macchiato-overlay2: #939ab7;
+
+  /* Macchiato Text */
+  --color-macchiato-subtext0: #a5adcb;
+  --color-macchiato-subtext1: #b8c0e0;
+  --color-macchiato-text: #cad3f5;
+
+  /* Macchiato Accents */
+  --color-macchiato-lavender: #b7bdf8;
+  --color-macchiato-blue: #8aadf4;
+  --color-macchiato-sapphire: #7dc4e4;
+  --color-macchiato-sky: #91d7e3;
+  --color-macchiato-teal: #8bd5ca;
+  --color-macchiato-green: #a6da95;
+  --color-macchiato-yellow: #eed49f;
+  --color-macchiato-peach: #f5a97f;
+  --color-macchiato-maroon: #ee99a0;
+  --color-macchiato-red: #ed8796;
+  --color-macchiato-mauve: #c6a0f6;
+  --color-macchiato-pink: #f5bde6;
+  --color-macchiato-flamingo: #f0c6c6;
+  --color-macchiato-rosewater: #f4dbd6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #24273a;
+    color: #cad3f5;
+    font-family: "Outfit", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #1e2030;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #494d64;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c6a0f6;
+  }
 }
