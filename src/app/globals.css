@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
 @import "tailwindcss";
 
+/* CUstom Color  */
 @theme {
   /* Fonts */
   --font-sans: "Outfit", sans-serif;
@@ -74,4 +75,16 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #c6a0f6;
   }
+}
+
+/* Custom shadow  */
+@theme {
+  --shadow-mauve:
+    0 0 20px rgba(198, 160, 246, 0.45), 0 4px 14px rgba(198, 160, 246, 0.3);
+  --shadow-mauve-hover:
+    0 0 32px rgba(198, 160, 246, 0.65), 0 6px 20px rgba(198, 160, 246, 0.4);
+  --shadow-surface:
+    0 0 14px rgba(147, 154, 183, 0.15), 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-surface-hover:
+    0 0 24px rgba(147, 154, 183, 0.28), 0 6px 18px rgba(0, 0, 0, 0.45);
 }

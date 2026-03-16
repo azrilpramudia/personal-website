@@ -1,49 +1,30 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { fadeUpCustom } from "@/src/lib/animation";
+import Button from "../ui/Button";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut", delay: i * 0.15 },
-  }),
-};
+// Data dots dekoratif
+const dots = ["bg-macchiato-red", "bg-macchiato-yellow", "bg-macchiato-green"];
 
 export default function Hero() {
-  const scrollTo = (id: string) => {
+  const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center bg-macchiato-base overflow-hidden px-6"
     >
-      {/* Background glow blobs */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-80 w-[560px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(198,160,246,0.10) 0%, transparent 70%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-1/4 right-1/3 h-64 w-64 rounded-full"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(138,173,244,0.08) 0%, transparent 70%)",
-          filter: "blur(50px)",
-        }}
-      />
+      {/* Glow blobs — dekoratif saja, tidak perlu dipisah */}
+      <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-80 w-[560px] rounded-full bg-macchiato-mauve/10 blur-[80px]" />
+      <div className="pointer-events-none absolute bottom-1/4 right-1/3 h-64 w-64 rounded-full bg-macchiato-blue/8 blur-[80px]" />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl w-full">
         {/* Greeting */}
         <motion.p
           custom={0}
-          variants={fadeUp}
+          variants={fadeUpCustom}
           initial="hidden"
           animate="visible"
           className="font-mono text-macchiato-text text-sm tracking-widest mb-2"
@@ -54,21 +35,21 @@ export default function Hero() {
         {/* Decorative dots + line */}
         <motion.div
           custom={1}
-          variants={fadeUp}
+          variants={fadeUpCustom}
           initial="hidden"
           animate="visible"
           className="flex items-center gap-1.5 mb-8"
         >
-          <span className="size-3 rounded-full bg-macchiato-red" />
-          <span className="size-3 rounded-full bg-macchiato-yellow" />
-          <span className="size-3 rounded-full bg-macchiato-green" />
+          {dots.map((color) => (
+            <span key={color} className={`size-3 rounded-full ${color}`} />
+          ))}
           <span className="ml-1.5 h-px w-14 bg-macchiato-surface2" />
         </motion.div>
 
         {/* Headline */}
         <motion.h1
           custom={2}
-          variants={fadeUp}
+          variants={fadeUpCustom}
           initial="hidden"
           animate="visible"
           className="text-macchiato-text font-extrabold tracking-tight leading-tight mb-6"
@@ -82,7 +63,7 @@ export default function Hero() {
         {/* Description */}
         <motion.p
           custom={3}
-          variants={fadeUp}
+          variants={fadeUpCustom}
           initial="hidden"
           animate="visible"
           className="text-macchiato-subtext1 text-base md:text-lg leading-relaxed max-w-2xl mb-10"
@@ -97,51 +78,20 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           custom={4}
-          variants={fadeUp}
+          variants={fadeUpCustom}
           initial="hidden"
           animate="visible"
           className="flex flex-col sm:flex-row gap-4 mb-20"
         >
-          <button
-            onClick={() => scrollTo("projects")}
-            className="cursor-pointer rounded-lg px-8 py-3 font-semibold text-macchiato-base bg-macchiato-mauve transition-all duration-300 hover:-translate-y-0.5"
-            style={{
-              boxShadow:
-                "0 0 20px rgba(198,160,246,0.45), 0 4px 14px rgba(198,160,246,0.3)",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0 0 32px rgba(198,160,246,0.65), 0 6px 20px rgba(198,160,246,0.4)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0 0 20px rgba(198,160,246,0.45), 0 4px 14px rgba(198,160,246,0.3)")
-            }
-          >
+          <Button variant="primary" onClick={() => scrollTo("projects")}>
             Show My Work
-          </button>
-
-          <button
-            onClick={() => scrollTo("contact")}
-            className="cursor-pointer rounded-lg border border-macchiato-surface2 px-8 py-3 font-semibold text-macchiato-text transition-all duration-300 hover:-translate-y-0.5 hover:border-macchiato-overlay1 flex items-center gap-2"
-            style={{
-              boxShadow:
-                "0 0 14px rgba(147,154,183,0.15), 0 4px 12px rgba(0,0,0,0.35)",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0 0 24px rgba(147,154,183,0.28), 0 6px 18px rgba(0,0,0,0.45)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.boxShadow =
-                "0 0 14px rgba(147,154,183,0.15), 0 4px 12px rgba(0,0,0,0.35)")
-            }
-          >
+          </Button>
+          <Button variant="secondary" onClick={() => scrollTo("contact")}>
             Let&apos;s talk <span>→</span>
-          </button>
+          </Button>
         </motion.div>
 
-        {/* Animated scroll arrow */}
+        {/* Scroll-down arrow */}
         <motion.button
           onClick={() => scrollTo("about")}
           aria-label="Scroll down"
@@ -155,13 +105,7 @@ export default function Hero() {
           }}
           className="cursor-pointer text-macchiato-overlay0 hover:text-macchiato-subtext1 transition-colors"
         >
-          <svg
-            width="20"
-            height="32"
-            viewBox="0 0 20 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
             <line
               x1="10"
               y1="1"
