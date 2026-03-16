@@ -110,7 +110,7 @@ export default function Navbar() {
           transition={{ delay: 0.3 }}
           className="font-mono text-sm text-macchiato-mauve tracking-wider"
         >
-          azril.dev
+          meowhx.dev
         </motion.span>
 
         {/* Hamburger button */}
