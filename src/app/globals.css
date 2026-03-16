@@ -88,3 +88,19 @@
   --shadow-surface-hover:
     0 0 24px rgba(147, 154, 183, 0.28), 0 6px 18px rgba(0, 0, 0, 0.45);
 }
+
+/* Navbar Glassmorphim Color */
+@theme {
+  --color-nav-glass: rgba(30, 32, 48, 0.8);
+  --color-nav-dropdown: rgba(30, 32, 48, 0.95);
+  --color-nav-pill: rgba(91, 96, 120, 0.45);
+  --color-nav-active-mobile: rgba(198, 160, 246, 0.1);
+
+  --shadow-nav: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-nav-scrolled:
+    0 8px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(198, 160, 246, 0.08);
+  --shadow-nav-dropdown: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+  --border-nav: 1px solid rgba(91, 96, 120, 0.35);
+  --border-nav-dropdown: 1px solid rgba(91, 96, 120, 0.4);
+}

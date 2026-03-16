@@ -108,7 +108,7 @@ export default function Navbar() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="font-mono text-sm text-macchiato-mauve tracking-wider"
+          className="font-mono text-sm text-macchiato-text tracking-wider"
         >
           meowhx.dev
         </motion.span>

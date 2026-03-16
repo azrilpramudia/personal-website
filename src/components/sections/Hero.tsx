@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { fadeUpCustom } from "@/src/lib/animation";
+import { ArrowRight } from "lucide-react";
 import Button from "../ui/Button";
 
-// Data dots dekoratif
 const dots = ["bg-macchiato-red", "bg-macchiato-yellow", "bg-macchiato-green"];
 
 export default function Hero() {
@@ -14,10 +14,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center bg-macchiato-base overflow-hidden px-6"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-macchiato-base overflow-hidden px-6 pt-24 md:pt-28"
     >
-      {/* Glow blobs — dekoratif saja, tidak perlu dipisah */}
-      <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-80 w-[560px] rounded-full bg-macchiato-mauve/10 blur-[80px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-80 w-140 rounded-full bg-macchiato-mauve/10 blur-[80px]" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/3 h-64 w-64 rounded-full bg-macchiato-blue/8 blur-[80px]" />
 
       <div className="relative z-10 flex flex-col items-center text-center max-w-3xl w-full">
@@ -84,10 +83,18 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 mb-20"
         >
           <Button variant="primary" onClick={() => scrollTo("projects")}>
-            Show My Work
+            &gt;_ Explore My Work
           </Button>
-          <Button variant="secondary" onClick={() => scrollTo("contact")}>
-            Let&apos;s talk <span>→</span>
+          <Button
+            variant="secondary"
+            onClick={() => scrollTo("contact")}
+            className="flex items-center gap-2 group"
+          >
+            Let&apos;s talk
+            <ArrowRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform"
+            />
           </Button>
         </motion.div>
 
