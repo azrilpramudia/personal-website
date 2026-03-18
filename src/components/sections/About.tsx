@@ -7,9 +7,9 @@ import {
   slideInLeft,
   slideInRight,
 } from "@/src/lib/animation";
-import { TerminalLine, Cursor } from "@/src/components/ui/Terminal";
+import { TypingTerminal } from "@/src/components/ui/Terminal";
 import { socialIcons } from "@/src/components/ui/SocialIcons";
-import { aboutInfo, socials, terminalLines } from "@/src/data/about";
+import { aboutInfo, socials } from "@/src/data/about";
 
 // ── Terminal card ─────────────────────────────────────────────
 function TerminalCard() {
@@ -36,14 +36,7 @@ function TerminalCard() {
       </div>
 
       {/* Body */}
-      <div className="px-5 py-4 min-h-70">
-        {terminalLines.map((line, i) => (
-          <TerminalLine key={i} line={line} />
-        ))}
-        <div className="mt-2">
-          <Cursor />
-        </div>
-      </div>
+      <TypingTerminal />
     </div>
   );
 }
