@@ -67,11 +67,11 @@ export default function Hero() {
           animate="visible"
           className="text-macchiato-subtext1 text-base md:text-lg leading-relaxed max-w-2xl mb-10"
         >
-          Currently diving deep into the JavaScript ecosystem, crafting sleek
-          interfaces with React and Tailwind CSS. At the same time, I&apos;m
-          hardening my expertise in Linux and Bash scripting to manage Docker
-          environments, driven by an obsession with building efficient
-          applications that communicate seamlessly across the network.
+          Final-year IT Student & Passionate React, JavaScript, Tailwind. A
+          Linux enthusiast exploring the depths of Docker and Network
+          Infrastructure. Over the last 3 months, I have undergone an intensive
+          deep-dive into the modern web ecosystem, transforming core
+          fundamentals into scalable digital solutions.
         </motion.p>
 
         {/* CTA Buttons */}
