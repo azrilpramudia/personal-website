@@ -36,7 +36,7 @@ function TerminalCard() {
       </div>
 
       {/* Body */}
-      <div className="px-5 py-4 min-h-[280px]">
+      <div className="px-5 py-4 min-h-70">
         {terminalLines.map((line, i) => (
           <TerminalLine key={i} line={line} />
         ))}
@@ -112,7 +112,7 @@ function InfoPanel() {
             <polyline points="7 10 12 15 17 10" />
             <line x1="12" y1="15" x2="12" y2="3" />
           </svg>
-          Download CV
+          Get Resume
         </a>
       </motion.div>
     </motion.div>
