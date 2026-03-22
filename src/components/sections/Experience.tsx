@@ -8,7 +8,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { fadeUp, staggerContainer, slideInLeft } from "@/src/lib/animation";
+import { fadeUp, staggerContainer } from "@/src/lib/animation";
 import { calcDuration, cn } from "@/src/lib/utils";
 import { experiences } from "@/src/data/experience";
 import type { Experience as ExperienceType } from "@/src/types";
@@ -133,19 +133,10 @@ function ExperienceItem({
   const duration = calcDuration(exp.startDate, exp.endDate);
 
   return (
-    <motion.div
-      variants={slideInLeft}
-      layout
-      className={cn("relative flex items-start", !isLast && "pb-10")}
-    >
-      {/*
-        ── DOT ──────────────────────────────────────────────────
-        Lebar = DOT_SIZE (12px), posisi absolut kiri = 0
-        Center dot = 0 + 12/2 = 6px = sama dengan center line (5px + 1px = 6px) ✓
-        Pakai negative margin-left agar dot "keluar" ke kiri dari content
-      */}
+    <div className={cn("relative flex items-start", !isLast && "pb-10")}>
+      {/* Dot — plain div, tanpa animasi sama sekali */}
       <div
-        className="relative z-10 flex-shrink-0 mt-[18px]"
+        className="relative z-10 shrink-0 mt-4.5"
         style={{
           width: DOT_SIZE,
           marginLeft: -DOT_SIZE / 2,
@@ -157,22 +148,17 @@ function ExperienceItem({
           style={{
             width: DOT_SIZE,
             height: DOT_SIZE,
-            outline: "3px solid #24273a", // pisahkan dot dari line secara visual
+            outline: "3px solid #24273a",
             boxShadow: isPresent
               ? "0 0 0 4px rgba(238,212,159,0.15), 0 0 14px rgba(238,212,159,0.5)"
               : undefined,
           }}
         />
-        {isPresent && (
-          <span
-            className="absolute inset-0 rounded-full bg-macchiato-yellow/30 animate-ping"
-            style={{ width: DOT_SIZE, height: DOT_SIZE }}
-          />
-        )}
       </div>
 
-      {/* ── CARD ─────────────────────────────────────────────── */}
-      <div
+      {/* Card — fadeUp animation hanya pada card */}
+      <motion.div
+        variants={fadeUp}
         className="flex-1 min-w-0 rounded-xl p-5 transition-all duration-300"
         style={{
           background: "rgba(36,39,58,0.55)",
@@ -197,7 +183,7 @@ function ExperienceItem({
             {exp.role}
           </h3>
           {exp.type && (
-            <span className="flex-shrink-0 text-xs px-2.5 py-0.5 rounded-full font-medium bg-macchiato-mauve/10 text-macchiato-mauve border border-macchiato-mauve/20">
+            <span className="shrink-0 text-xs px-2.5 py-0.5 rounded-full font-medium bg-macchiato-mauve/10 text-macchiato-mauve border border-macchiato-mauve/20">
               {exp.type}
             </span>
           )}
@@ -232,7 +218,7 @@ function ExperienceItem({
           <span className="text-macchiato-overlay1">{duration}</span>
           {isPresent && (
             <span className="inline-flex items-center gap-1.5 text-macchiato-green">
-              <span className="size-1.5 rounded-full bg-macchiato-green animate-pulse" />
+              <span className="size-1.5 rounded-full bg-macchiato-green" />
               Active
             </span>
           )}
@@ -266,8 +252,8 @@ function ExperienceItem({
             ))}
           </div>
         )}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
