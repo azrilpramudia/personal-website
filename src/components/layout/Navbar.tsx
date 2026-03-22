@@ -77,97 +77,112 @@ export default function Navbar() {
           Get Resume
         </a>
       </motion.nav>
-
-      {/* ── Mobile: brand + hamburger ── */}
-      <div className="flex md:hidden w-full items-center justify-between">
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          onClick={() => scrollToSection("home")}
-          className="font-mono text-sm text-macchiato-mauve tracking-wider cursor-pointer"
+      {/* ── Mobile: brand + hamburger + dropdown ── */}
+      <div className="relative flex md:hidden w-full flex-col">
+        {/* Brand + hamburger bar */}
+        <motion.div
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+          className="flex md:hidden w-full items-center justify-between px-4 py-2 rounded-full"
+          style={{
+            background: "var(--color-nav-glass)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            border: "var(--border-nav)",
+            boxShadow: scrolled
+              ? "var(--shadow-nav-scrolled)"
+              : "var(--shadow-nav)",
+            transition: "box-shadow 0.3s ease",
+          }}
         >
-          {personalInfo.username}.dev
-        </motion.button>
-
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          onClick={() => setMenuOpen((v) => !v)}
-          className="flex flex-col gap-1.5 p-2 cursor-pointer"
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-macchiato-subtext1 origin-center"
-          />
-          <motion.span
-            animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="block h-px w-6 bg-macchiato-subtext1"
-          />
-          <motion.span
-            animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-            className="block h-px w-6 bg-macchiato-subtext1 origin-center"
-          />
-        </motion.button>
-      </div>
-
-      {/* ── Mobile dropdown ── */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -8 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-16 left-4 right-4 rounded-2xl p-2 md:hidden"
-            style={{
-              background: "var(--color-nav-dropdown)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "var(--border-nav-dropdown)",
-              boxShadow: "var(--shadow-nav-dropdown)",
-            }}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            onClick={() => scrollToSection("home")}
+            className="font-mono text-sm text-macchiato-mauve tracking-wider cursor-pointer"
           >
-            {navItems.map((item, i) => {
-              const isActive = activeSection === item.href.replace("#", "");
-              return (
-                <motion.button
-                  key={item.href}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(item.href)}
-                  className={[
-                    "w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
-                    isActive
-                      ? "text-macchiato-mauve bg-macchiato-mauve/10"
-                      : "text-macchiato-subtext0 hover:text-macchiato-text",
-                  ].join(" ")}
-                >
-                  {item.label}
-                </motion.button>
-              );
-            })}
+            {personalInfo.username}.dev
+          </motion.button>
 
-            <div className="mx-3 my-1 h-px bg-macchiato-surface1" />
+          <motion.button
+            onClick={() => setMenuOpen((v) => !v)}
+            className="flex flex-col gap-1.5 p-2 cursor-pointer"
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={menuOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              className="block h-px w-6 bg-macchiato-subtext1 origin-center"
+            />
+            <motion.span
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="block h-px w-6 bg-macchiato-subtext1"
+            />
+            <motion.span
+              animate={menuOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              className="block h-px w-6 bg-macchiato-subtext1 origin-center"
+            />
+          </motion.button>
+        </motion.div>
 
-            <motion.a
-              href={personalInfo.cvUrl}
-              download
-              initial={{ opacity: 0, x: -8 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: navItems.length * 0.05 }}
-              onClick={() => setMenuOpen(false)}
-              className="w-full flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium cursor-pointer text-macchiato-mauve hover:bg-macchiato-mauve/10 transition-colors duration-150"
+        {/* Mobile dropdown — di dalam relative wrapper */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute left-0 right-0 top-full mt-3 rounded-2xl p-2 z-50"
+              style={{
+                background: "var(--color-nav-dropdown)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "var(--border-nav-dropdown)",
+                boxShadow: "var(--shadow-nav-dropdown)",
+              }}
             >
-              <DownloadIcon size={12} />
-              Get Resume
-            </motion.a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {navItems.map((item, i) => {
+                const isActive = activeSection === item.href.replace("#", "");
+                return (
+                  <motion.button
+                    key={item.href}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    onClick={() => handleNavClick(item.href)}
+                    className={[
+                      "w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
+                      isActive
+                        ? "text-macchiato-mauve bg-macchiato-mauve/10"
+                        : "text-macchiato-subtext0 hover:text-macchiato-text",
+                    ].join(" ")}
+                  >
+                    {item.label}
+                  </motion.button>
+                );
+              })}
+
+              <div className="mx-3 my-1 h-px bg-macchiato-surface1" />
+
+              <motion.a
+                href={personalInfo.cvUrl}
+                download
+                initial={{ opacity: 0, x: -8 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.05 }}
+                onClick={() => setMenuOpen(false)}
+                className="w-full flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium cursor-pointer text-macchiato-mauve hover:bg-macchiato-mauve/10 transition-colors duration-150"
+              >
+                <DownloadIcon size={12} />
+                Get Resume
+              </motion.a>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>{" "}
+      {/* end relative wrapper */}
     </header>
   );
 }
