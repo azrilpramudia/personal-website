@@ -4,13 +4,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, personalInfo } from "@/src/data/index";
 import { scrollToSection } from "@/src/lib/utils";
-import { useNavScroll } from "@/src/hook/useScroll";
+import { useNavScroll, useScrollDirection } from "@/src/hook/useScroll";
 import { DownloadIcon } from "@/src/components/ui/Icons";
 
 // ── Main Navbar ───────────────────────────────────────────────
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrolled, activeSection } = useNavScroll();
+  const scrollDirection = useScrollDirection();
 
   const handleNavClick = (href: string) => {
     scrollToSection(href.replace("#", ""));
@@ -77,14 +78,22 @@ export default function Navbar() {
           Get Resume
         </a>
       </motion.nav>
+
       {/* ── Mobile: brand + hamburger + dropdown ── */}
-      <div className="relative flex md:hidden w-full flex-col">
+      <motion.div
+        className="relative flex md:hidden w-full flex-col"
+        animate={{
+          y: scrollDirection === "down" && !menuOpen ? "-120%" : "0%",
+          opacity: scrollDirection === "down" && !menuOpen ? 0 : 1,
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         {/* Brand + hamburger bar */}
         <motion.div
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-          className="flex md:hidden w-full items-center justify-between px-4 py-2 rounded-full"
+          className="flex w-full items-center justify-between px-4 py-2 rounded-full"
           style={{
             background: "var(--color-nav-glass)",
             backdropFilter: "blur(16px)",
@@ -101,7 +110,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             onClick={() => scrollToSection("home")}
-            className="font-mono text-sm text-macchiato-mauve tracking-wider cursor-pointer"
+            className="font-mono text-sm text-macchiato-text tracking-wider cursor-pointer"
           >
             {personalInfo.username}.dev
           </motion.button>
@@ -126,7 +135,7 @@ export default function Navbar() {
           </motion.button>
         </motion.div>
 
-        {/* Mobile dropdown — di dalam relative wrapper */}
+        {/* Mobile dropdown */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -181,8 +190,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>{" "}
-      {/* end relative wrapper */}
+      </motion.div>
     </header>
   );
 }

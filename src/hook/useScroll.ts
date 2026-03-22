@@ -100,3 +100,22 @@ export function useCopyToClipboard(timeout = 2000) {
 
   return { copied, copy };
 }
+
+export function useScrollDirection(): "up" | "down" {
+  const [direction, setDirection] = useState<"up" | "down">("up");
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      if (Math.abs(currentY - lastY.current) < 5) return;
+      setDirection(currentY > lastY.current ? "down" : "up");
+      lastY.current = currentY;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return direction;
+}
