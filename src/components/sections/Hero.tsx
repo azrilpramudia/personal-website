@@ -117,7 +117,9 @@ export default function Hero() {
             className="flex items-center gap-2 group"
           >
             Let&apos;s talk
-            <ArrowRightIcon size={16} />
+            <span className="transition-transform duration-200 group-hover:translate-x-1">
+              <ArrowRightIcon size={16} />
+            </span>
           </Button>
         </motion.div>
 
