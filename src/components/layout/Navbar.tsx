@@ -87,7 +87,7 @@ export default function Navbar() {
           onClick={() => scrollToSection("home")}
           className="font-mono text-sm text-macchiato-mauve tracking-wider cursor-pointer"
         >
-          {personalInfo.name.toLowerCase().replace(" ", ".")}.dev
+          {personalInfo.username}.dev
         </motion.button>
 
         <motion.button
