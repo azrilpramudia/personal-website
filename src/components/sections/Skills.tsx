@@ -80,10 +80,10 @@ export default function Skills() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-medium max-w-md leading-relaxed"
           >
             here are the frameworks, libraries, services, and runtimes i have
-            experiences with. this is not a complete list! i &apos; m constantly
+            experiences with. this is not a complete list! i&apos;m constantly
             gaining new skills, and hence it can be a little bit outdated
           </motion.p>
         </motion.div>
