@@ -117,10 +117,22 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         transition: { duration: 0.2 },
       }}
     >
-      {/* Top row: folder icon + links */}
+      {/* Top row: folder icon + featured badge (kanan atas) */}
       <div className="flex items-start justify-between mb-5">
         <FolderIcon />
-        <div className="flex items-center gap-3 text-macchiato-overlay1">
+        {project.featured && (
+          <span className="text-xs px-2 py-0.5 rounded-full font-medium font-mono bg-macchiato-yellow/10 text-macchiato-yellow border border-macchiato-yellow/20">
+            ★ featured
+          </span>
+        )}
+      </div>
+
+      {/* Title + links sejajar */}
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h3 className="text-macchiato-text font-bold text-base leading-snug group-hover:text-macchiato-mauve transition-colors duration-200">
+          {project.title}
+        </h3>
+        <div className="flex items-center gap-2.5 text-macchiato-overlay1 shrink-0 mt-0.5">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
@@ -145,11 +157,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           )}
         </div>
       </div>
-
-      {/* Title */}
-      <h3 className="text-macchiato-text font-bold text-base mb-2 group-hover:text-macchiato-mauve transition-colors duration-200">
-        {project.title}
-      </h3>
 
       {/* Description */}
       <p className="text-macchiato-subtext0 text-sm leading-relaxed flex-1 mb-5">

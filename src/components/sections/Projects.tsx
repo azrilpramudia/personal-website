@@ -6,6 +6,7 @@ import { fadeUp, staggerContainer } from "@/src/lib/animation";
 import { cn } from "@/src/lib/utils";
 import { ProjectCard } from "@/src/components/ui/ProjectCard";
 import { projects } from "@/src/data/projects";
+import { personalInfo } from "@/src/data/index";
 
 // ── Filter types ──────────────────────────────────────────────
 const FILTERS = ["All", "Featured"] as const;
@@ -54,6 +55,23 @@ function FilterTabs({
   );
 }
 
+// ── Empty State ───────────────────────────────────────────────
+function EmptyState() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex flex-col items-center gap-3 py-20 text-center"
+    >
+      <span className="text-4xl">🗂️</span>
+      <p className="text-macchiato-subtext0 text-sm">
+        No <span className="text-macchiato-mauve font-medium">featured</span>{" "}
+        projects yet.
+      </p>
+    </motion.div>
+  );
+}
+
 // ── Main Section ──────────────────────────────────────────────
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
@@ -75,15 +93,21 @@ export default function Projects() {
           viewport={{ once: true }}
           className="flex flex-col items-center text-center mb-12 gap-3"
         >
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-macchiato-mauve text-sm tracking-widest"
+          >
+            things i&apos;ve built
+          </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-macchiato-text text-3xl md:text-4xl font-bold tracking-tight"
           >
-            My Projects
+            Projects
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-medium max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
           >
             A selection of projects I&apos;ve worked on — from personal
             experiments to full applications.
@@ -97,21 +121,25 @@ export default function Projects() {
 
         {/* Project grid */}
         <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-          >
-            {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
-          </motion.div>
+          {filtered.length === 0 ? (
+            <EmptyState key="empty" />
+          ) : (
+            <motion.div
+              key={activeFilter}
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            >
+              {filtered.map((project, i) => (
+                <ProjectCard key={project.id} project={project} index={i} />
+              ))}
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {/* GitHub CTA */}
+        {/* GitHub CTA — URL dari personalInfo */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -120,7 +148,7 @@ export default function Projects() {
           className="flex justify-center mt-12"
         >
           <a
-            href="https://github.com/username"
+            href={personalInfo.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium text-macchiato-subtext1 border border-macchiato-surface2 hover:border-macchiato-mauve hover:text-macchiato-mauve transition-all duration-200"
