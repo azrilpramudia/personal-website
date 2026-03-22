@@ -18,12 +18,9 @@ const FILTERS = ["All", "Full-Time", "Freelance", "Contract"] as const;
 type Filter = (typeof FILTERS)[number];
 
 // Ukuran dot dan lebar line — satu sumber kebenaran
-const DOT_SIZE = 12; // px — size-3
-const LINE_W = 2; // px — w-0.5
-// Center dot dari kiri container = setengah DOT_SIZE
-// Center line dari kiri container = left + setengah LINE_W
-// Supaya sama: left line = (DOT_SIZE / 2) - (LINE_W / 2) = 5px
-const LINE_LEFT = DOT_SIZE / 2 - LINE_W / 2; // = 5px
+const DOT_SIZE = 12;
+const LINE_W = 2;
+const LINE_LEFT = DOT_SIZE / 2 - LINE_W / 2;
 
 // ── Progress Line ─────────────────────────────────────────────
 function TimelineProgressLine({
@@ -283,19 +280,13 @@ export default function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-10"
+          className="mb-10 text-center"
         >
-          <motion.p
-            variants={fadeUp}
-            className="font-mono text-macchiato-mauve text-sm tracking-widest mb-2"
-          >
-            career path
-          </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-macchiato-text text-3xl md:text-4xl font-bold tracking-tight mb-3"
           >
-            Work History
+            Work Experience
           </motion.h2>
           <motion.p
             variants={fadeUp}
