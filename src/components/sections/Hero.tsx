@@ -2,20 +2,46 @@
 
 import { motion } from "framer-motion";
 import { fadeUpCustom } from "@/src/lib/animation";
-import { ArrowRight } from "lucide-react";
-import Button from "../ui/Button";
+import { scrollToSection } from "@/src/lib/utils";
+import { ArrowRightIcon } from "@/src/components/ui/Icons";
+import Button from "@/src/components/ui/Button";
 
+// ── Data ──────────────────────────────────────────────────────
 const dots = ["bg-macchiato-red", "bg-macchiato-yellow", "bg-macchiato-green"];
 
-export default function Hero() {
-  const scrollTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+// ── Scroll arrow SVG ──────────────────────────────────────────
+function ScrollArrow() {
+  return (
+    <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
+      <line
+        x1="10"
+        y1="1"
+        x2="10"
+        y2="24"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M3 18 L10 26 L17 18"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
+    </svg>
+  );
+}
 
+// ── Main section ──────────────────────────────────────────────
+export default function Hero() {
   return (
     <section
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center bg-macchiato-base overflow-hidden px-6 pt-24 md:pt-28"
     >
+      {/* Background glow blobs */}
       <div className="pointer-events-none absolute left-1/2 top-1/3 -translate-x-1/2 -translate-y-1/2 h-80 w-140 rounded-full bg-macchiato-mauve/10 blur-[80px]" />
       <div className="pointer-events-none absolute bottom-1/4 right-1/3 h-64 w-64 rounded-full bg-macchiato-blue/8 blur-[80px]" />
 
@@ -82,25 +108,22 @@ export default function Hero() {
           animate="visible"
           className="flex flex-col sm:flex-row gap-4 mb-20"
         >
-          <Button variant="primary" onClick={() => scrollTo("projects")}>
+          <Button variant="primary" onClick={() => scrollToSection("projects")}>
             &gt;_ Explore My Work
           </Button>
           <Button
             variant="secondary"
-            onClick={() => scrollTo("contact")}
+            onClick={() => scrollToSection("contact")}
             className="flex items-center gap-2 group"
           >
             Let&apos;s talk
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform"
-            />
+            <ArrowRightIcon size={16} />
           </Button>
         </motion.div>
 
         {/* Scroll-down arrow */}
         <motion.button
-          onClick={() => scrollTo("about")}
+          onClick={() => scrollToSection("about")}
           aria-label="Scroll down"
           initial={{ opacity: 0 }}
           animate={{ opacity: [0.45, 1, 0.45], y: [0, 10, 0] }}
@@ -112,25 +135,7 @@ export default function Hero() {
           }}
           className="cursor-pointer text-macchiato-overlay0 hover:text-macchiato-subtext1 transition-colors"
         >
-          <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
-            <line
-              x1="10"
-              y1="1"
-              x2="10"
-              y2="24"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path
-              d="M3 18 L10 26 L17 18"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </svg>
+          <ScrollArrow />
         </motion.button>
       </div>
     </section>
