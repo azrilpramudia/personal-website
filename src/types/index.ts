@@ -11,36 +11,27 @@ export interface Project {
   year: number;
 }
 
-// EXPERIENCE / TIMELINE TYPES
+export type ExperienceType =
+  | "Full-Time"
+  | "Part-Time"
+  | "Freelance"
+  | "Contract"
+  | "Internship";
+
 export interface Experience {
   id: string;
   role: string;
   company: string;
   companyUrl?: string;
   location: string;
-  type?: string;
+  type?: ExperienceType;
   startDate: string;
   endDate: string;
   description: string[];
   techStack?: string[];
 }
 
-// SKILL TYPES
-export interface Skill {
-  name: string;
-  category: "frontend" | "backend" | "tools" | "other";
-  proficiency?: "beginner" | "intermediate" | "advanced" | "expert";
-}
-
-// NAV TYPES
 export interface NavItem {
   label: string;
   href: string;
-}
-
-// SOCIAL LINK TYPES
-export interface SocialLink {
-  platform: string;
-  url: string;
-  icon: string;
 }
