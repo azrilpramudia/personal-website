@@ -64,14 +64,12 @@ export const socialLinks: SocialLink[] = [
 // PERSONAL INFO
 // ============================================================
 export const personalInfo = {
-  name: "Nama Kamu",
-  title: "Full Stack Developer",
-  tagline: "Membangun produk digital yang indah & fungsional.",
-  bio: "Saya seorang developer yang passionate dalam membuat pengalaman web yang luar biasa. Suka belajar hal baru dan bereksperimen dengan teknologi terbaru.",
+  name: "meowhx",
+  title: "Frontend Developer",
   location: "Indonesia",
   availableForWork: true,
   cvUrl: "/cv.pdf",
-  githubUrl: "https://github.com/username",
-  linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah", // ganti dengan username LinkedIn kamu
-  email: "azrilpramudia01@gmail.com", // ganti dengan email kamu
+  githubUrl: "https://github.com/azrilpramudia",
+  linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah",
+  email: "azrilpramudia01@gmail.com",
 };
