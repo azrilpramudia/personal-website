@@ -72,6 +72,6 @@ export const personalInfo = {
   availableForWork: true,
   cvUrl: "/cv.pdf",
   githubUrl: "https://github.com/username",
-  linkedinUrl: "https://linkedin.com/in/username", // ganti dengan username LinkedIn kamu
-  email: "email@example.com", // ganti dengan email kamu
+  linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah", // ganti dengan username LinkedIn kamu
+  email: "azrilpramudia01@gmail.com", // ganti dengan email kamu
 };
