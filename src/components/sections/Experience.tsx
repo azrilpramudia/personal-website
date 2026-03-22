@@ -159,22 +159,15 @@ function ExperienceItem({
       {/* Card — fadeUp animation hanya pada card */}
       <motion.div
         variants={fadeUp}
-        className="flex-1 min-w-0 rounded-xl p-5 transition-all duration-300"
+        className="flex-1 min-w-0 rounded-xl p-5 transition-colors duration-300"
         style={{
           background: "rgba(36,39,58,0.55)",
           border: "1px solid rgba(91,96,120,0.25)",
         }}
-        onMouseEnter={(e) => {
-          (e.currentTarget as HTMLDivElement).style.borderColor =
-            "rgba(198,160,246,0.3)";
-          (e.currentTarget as HTMLDivElement).style.background =
-            "rgba(54,58,79,0.5)";
-        }}
-        onMouseLeave={(e) => {
-          (e.currentTarget as HTMLDivElement).style.borderColor =
-            "rgba(91,96,120,0.25)";
-          (e.currentTarget as HTMLDivElement).style.background =
-            "rgba(36,39,58,0.55)";
+        whileHover={{
+          borderColor: "rgba(198,160,246,0.3)",
+          background: "rgba(54,58,79,0.5)",
+          transition: { duration: 0.2 },
         }}
       >
         {/* Role + type badge */}
@@ -338,8 +331,6 @@ export default function Experience() {
               animate="visible"
               exit={{ opacity: 0, transition: { duration: 0.15 } }}
               ref={timelineRef}
-              // padding-left = DOT_SIZE/2 supaya container mulai di center dot
-              // line pakai left = LINE_LEFT (5px) relatif ke container
               className="relative flex flex-col"
               style={{ paddingLeft: DOT_SIZE / 2 }}
             >
