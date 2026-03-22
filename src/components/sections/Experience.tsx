@@ -1,23 +1,66 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useMemo } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { fadeUp, staggerContainer, slideInLeft } from "@/src/lib/animation";
 import { calcDuration, cn } from "@/src/lib/utils";
 import { experiences } from "@/src/data/experience";
 import type { Experience as ExperienceType } from "@/src/types";
 
 // ── Constants ─────────────────────────────────────────────────
-const FILTERS = [
-  "All",
-  "Full-Time",
-  "Freelance",
-  "Contract",
-  "Internship",
-] as const;
+const FILTERS = ["All", "Full-Time", "Freelance", "Contract"] as const;
 type Filter = (typeof FILTERS)[number];
 
-// ── Filter Tab Bar ────────────────────────────────────────────
+// Ukuran dot dan lebar line — satu sumber kebenaran
+const DOT_SIZE = 12; // px — size-3
+const LINE_W = 2; // px — w-0.5
+// Center dot dari kiri container = setengah DOT_SIZE
+// Center line dari kiri container = left + setengah LINE_W
+// Supaya sama: left line = (DOT_SIZE / 2) - (LINE_W / 2) = 5px
+const LINE_LEFT = DOT_SIZE / 2 - LINE_W / 2; // = 5px
+
+// ── Progress Line ─────────────────────────────────────────────
+function TimelineProgressLine({
+  containerRef,
+}: {
+  containerRef: React.RefObject<HTMLDivElement | null>;
+}) {
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 75%", "end 60%"],
+  });
+
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
+  const scaleY = useTransform(smooth, [0, 1], [0, 1]);
+
+  return (
+    <div className="absolute top-4 bottom-4 w-0.5" style={{ left: LINE_LEFT }}>
+      <div className="absolute inset-0 rounded-full bg-macchiato-surface1" />
+      <motion.div
+        className="absolute inset-x-0 top-0 rounded-full origin-top"
+        style={{
+          scaleY,
+          height: "100%",
+          background: "linear-gradient(to bottom, #c6a0f6, #8aadf4)",
+          boxShadow: "0 0 8px rgba(198,160,246,0.5)",
+        }}
+      />
+    </div>
+  );
+}
+
+// ── Filter Tabs ───────────────────────────────────────────────
 function FilterTabs({
   active,
   counts,
@@ -30,7 +73,6 @@ function FilterTabs({
   return (
     <div className="flex flex-wrap gap-2 mb-10">
       {FILTERS.map((f) => {
-        // hide tab if no items (except "All")
         if (f !== "All" && !counts[f]) return null;
         const isActive = active === f;
         return (
@@ -79,7 +121,7 @@ function EmptyState({ filter }: { filter: Filter }) {
   );
 }
 
-// ── Single Experience Item ────────────────────────────────────
+// ── Experience Item ───────────────────────────────────────────
 function ExperienceItem({
   exp,
   isLast,
@@ -91,36 +133,78 @@ function ExperienceItem({
   const duration = calcDuration(exp.startDate, exp.endDate);
 
   return (
-    <motion.div variants={slideInLeft} layout className="relative flex gap-6">
-      {/* Timeline column */}
-      <div className="flex flex-col items-center shrink-0">
-        {/* Dot */}
-        <div className="relative z-10 mt-1.5">
-          <div
-            className="size-3 rounded-full bg-macchiato-yellow"
-            style={{
-              boxShadow: isPresent
-                ? "0 0 10px rgba(238,212,159,0.6), 0 0 22px rgba(238,212,159,0.25)"
-                : "none",
-            }}
+    <motion.div
+      variants={slideInLeft}
+      layout
+      className={cn("relative flex items-start", !isLast && "pb-10")}
+    >
+      {/*
+        ── DOT ──────────────────────────────────────────────────
+        Lebar = DOT_SIZE (12px), posisi absolut kiri = 0
+        Center dot = 0 + 12/2 = 6px = sama dengan center line (5px + 1px = 6px) ✓
+        Pakai negative margin-left agar dot "keluar" ke kiri dari content
+      */}
+      <div
+        className="relative z-10 flex-shrink-0 mt-[18px]"
+        style={{
+          width: DOT_SIZE,
+          marginLeft: -DOT_SIZE / 2,
+          marginRight: DOT_SIZE / 2 + 12,
+        }}
+      >
+        <div
+          className="rounded-full bg-macchiato-yellow"
+          style={{
+            width: DOT_SIZE,
+            height: DOT_SIZE,
+            outline: "3px solid #24273a", // pisahkan dot dari line secara visual
+            boxShadow: isPresent
+              ? "0 0 0 4px rgba(238,212,159,0.15), 0 0 14px rgba(238,212,159,0.5)"
+              : undefined,
+          }}
+        />
+        {isPresent && (
+          <span
+            className="absolute inset-0 rounded-full bg-macchiato-yellow/30 animate-ping"
+            style={{ width: DOT_SIZE, height: DOT_SIZE }}
           />
-          {isPresent && (
-            <div className="absolute inset-0 size-3 rounded-full bg-macchiato-yellow/40 animate-ping" />
-          )}
-        </div>
-        {/* Vertical line */}
-        {!isLast && <div className="w-px flex-1 mt-2 bg-macchiato-surface1" />}
+        )}
       </div>
 
-      {/* Content */}
-      <div className={cn("flex flex-col gap-2.5 min-w-0", !isLast && "pb-10")}>
-        {/* Role */}
-        <h3 className="text-macchiato-text font-bold text-base leading-snug">
-          {exp.role}
-        </h3>
+      {/* ── CARD ─────────────────────────────────────────────── */}
+      <div
+        className="flex-1 min-w-0 rounded-xl p-5 transition-all duration-300"
+        style={{
+          background: "rgba(36,39,58,0.55)",
+          border: "1px solid rgba(91,96,120,0.25)",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLDivElement).style.borderColor =
+            "rgba(198,160,246,0.3)";
+          (e.currentTarget as HTMLDivElement).style.background =
+            "rgba(54,58,79,0.5)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLDivElement).style.borderColor =
+            "rgba(91,96,120,0.25)";
+          (e.currentTarget as HTMLDivElement).style.background =
+            "rgba(36,39,58,0.55)";
+        }}
+      >
+        {/* Role + type badge */}
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="text-macchiato-text font-bold text-base leading-snug">
+            {exp.role}
+          </h3>
+          {exp.type && (
+            <span className="flex-shrink-0 text-xs px-2.5 py-0.5 rounded-full font-medium bg-macchiato-mauve/10 text-macchiato-mauve border border-macchiato-mauve/20">
+              {exp.type}
+            </span>
+          )}
+        </div>
 
-        {/* Meta row */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+        {/* Company · Location */}
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm mb-2">
           {exp.companyUrl ? (
             <a
               href={exp.companyUrl}
@@ -137,45 +221,45 @@ function ExperienceItem({
           )}
           <span className="text-macchiato-surface2">·</span>
           <span className="text-macchiato-subtext0">{exp.location}</span>
-          {exp.type && (
-            <>
-              <span className="text-macchiato-surface2">·</span>
-              <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-macchiato-mauve/10 text-macchiato-mauve border border-macchiato-mauve/20">
-                {exp.type}
-              </span>
-            </>
-          )}
         </div>
 
-        {/* Date + duration */}
-        <div className="flex items-center gap-2 font-mono text-xs text-macchiato-overlay0">
+        {/* Date · Duration · Active */}
+        <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-macchiato-overlay0 mb-4">
           <span>
             {exp.startDate} — {exp.endDate}
           </span>
           <span className="text-macchiato-surface2">·</span>
           <span className="text-macchiato-overlay1">{duration}</span>
+          {isPresent && (
+            <span className="inline-flex items-center gap-1.5 text-macchiato-green">
+              <span className="size-1.5 rounded-full bg-macchiato-green animate-pulse" />
+              Active
+            </span>
+          )}
         </div>
 
-        {/* Bullet points */}
-        <ul className="flex flex-col gap-2 mt-1">
+        <div className="h-px bg-macchiato-surface1 mb-4" />
+
+        {/* Bullets */}
+        <ul className="flex flex-col gap-2 mb-4">
           {exp.description.map((point, i) => (
             <li
               key={i}
               className="flex gap-2.5 text-sm text-macchiato-subtext1 leading-relaxed"
             >
-              <span className="mt-2 size-1.5 rounded-full bg-macchiato-overlay0 shrink-0" />
+              <span className="mt-2 size-1.5 rounded-full bg-macchiato-mauve/60 shrink-0" />
               {point}
             </li>
           ))}
         </ul>
 
-        {/* Tech stack tags */}
+        {/* Tech stack */}
         {exp.techStack && exp.techStack.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-2">
             {exp.techStack.map((tech) => (
               <span
                 key={tech}
-                className="font-mono text-xs px-2 py-0.5 rounded-md text-macchiato-teal bg-macchiato-surface0 border border-macchiato-surface1"
+                className="font-mono text-xs px-2.5 py-1 rounded-lg text-macchiato-teal bg-macchiato-surface0 border border-macchiato-surface1"
               >
                 {tech}
               </span>
@@ -190,8 +274,8 @@ function ExperienceItem({
 // ── Main Section ──────────────────────────────────────────────
 export default function Experience() {
   const [activeFilter, setActiveFilter] = useState<Filter>("All");
+  const timelineRef = useRef<HTMLDivElement>(null);
 
-  // Count per type + total
   const counts = useMemo(() => {
     const c: Record<string, number> = { __total: experiences.length };
     experiences.forEach((e) => {
@@ -200,7 +284,6 @@ export default function Experience() {
     return c;
   }, []);
 
-  // Filtered list
   const filtered = useMemo(
     () =>
       activeFilter === "All"
@@ -223,11 +306,17 @@ export default function Experience() {
           viewport={{ once: true }}
           className="mb-10"
         >
+          <motion.p
+            variants={fadeUp}
+            className="font-mono text-macchiato-mauve text-sm tracking-widest mb-2"
+          >
+            career path
+          </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-macchiato-text text-3xl md:text-4xl font-bold tracking-tight mb-3"
           >
-            Work Experience
+            Work History
           </motion.h2>
           <motion.p
             variants={fadeUp}
@@ -261,9 +350,14 @@ export default function Experience() {
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              exit={{ opacity: 0 }}
-              className="flex flex-col"
+              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              ref={timelineRef}
+              // padding-left = DOT_SIZE/2 supaya container mulai di center dot
+              // line pakai left = LINE_LEFT (5px) relatif ke container
+              className="relative flex flex-col"
+              style={{ paddingLeft: DOT_SIZE / 2 }}
             >
+              <TimelineProgressLine containerRef={timelineRef} />
               {filtered.map((exp, i) => (
                 <ExperienceItem
                   key={exp.id}
