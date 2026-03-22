@@ -154,6 +154,12 @@ function ExperienceItem({
               : undefined,
           }}
         />
+        {isPresent && (
+          <span
+            className="absolute inset-0 rounded-full bg-macchiato-yellow/40 animate-ping"
+            style={{ width: DOT_SIZE, height: DOT_SIZE }}
+          />
+        )}
       </div>
 
       {/* Card — fadeUp animation hanya pada card */}
@@ -209,12 +215,6 @@ function ExperienceItem({
           </span>
           <span className="text-macchiato-surface2">·</span>
           <span className="text-macchiato-overlay1">{duration}</span>
-          {isPresent && (
-            <span className="inline-flex items-center gap-1.5 text-macchiato-green">
-              <span className="size-1.5 rounded-full bg-macchiato-green" />
-              Active
-            </span>
-          )}
         </div>
 
         <div className="h-px bg-macchiato-surface1 mb-4" />
