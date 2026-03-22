@@ -93,12 +93,6 @@ export default function Projects() {
           viewport={{ once: true }}
           className="flex flex-col items-center text-center mb-12 gap-3"
         >
-          <motion.p
-            variants={fadeUp}
-            className="font-mono text-macchiato-mauve text-sm tracking-widest"
-          >
-            things i&apos;ve built
-          </motion.p>
           <motion.h2
             variants={fadeUp}
             className="text-macchiato-text text-3xl md:text-4xl font-bold tracking-tight"
@@ -107,7 +101,7 @@ export default function Projects() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-medium max-w-md leading-relaxed"
           >
             A selection of projects I&apos;ve worked on — from personal
             experiments to full applications.

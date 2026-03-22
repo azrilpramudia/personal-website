@@ -1,5 +1,8 @@
 import { Skill, NavItem, SocialLink } from "@/src/types";
 
+// ============================================================
+// NAVIGATION
+// ============================================================
 export const navItems: NavItem[] = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
@@ -8,6 +11,9 @@ export const navItems: NavItem[] = [
   { label: "Contact", href: "#contact" },
 ];
 
+// ============================================================
+// SKILLS
+// ============================================================
 export const skills: Skill[] = [
   // Frontend
   { name: "Next.js", category: "frontend", proficiency: "advanced" },
@@ -33,24 +39,30 @@ export const skillsByCategory = {
   tools: skills.filter((s) => s.category === "tools"),
 };
 
+// ============================================================
+// SOCIAL LINKS
+// ============================================================
 export const socialLinks: SocialLink[] = [
   {
     platform: "GitHub",
-    url: "https://github.com/azrilpramudia",
+    url: "https://github.com/username",
     icon: "Github",
   },
   {
     platform: "LinkedIn",
-    url: "https://linkedin.com/in/azril-pramudia-anugrah-202a872a6",
+    url: "https://linkedin.com/in/username",
     icon: "Linkedin",
   },
   {
     platform: "Email",
-    url: "mailto:azrilpramudia01@gmail.com",
+    url: "mailto:email@example.com",
     icon: "Mail",
   },
 ];
 
+// ============================================================
+// PERSONAL INFO
+// ============================================================
 export const personalInfo = {
   name: "Nama Kamu",
   title: "Full Stack Developer",
@@ -59,5 +71,7 @@ export const personalInfo = {
   location: "Indonesia",
   availableForWork: true,
   cvUrl: "/cv.pdf",
-  githubUrl: "https://github.com/azrilpramudia",
+  githubUrl: "https://github.com/username",
+  linkedinUrl: "https://linkedin.com/in/username", // ganti dengan username LinkedIn kamu
+  email: "email@example.com", // ganti dengan email kamu
 };
