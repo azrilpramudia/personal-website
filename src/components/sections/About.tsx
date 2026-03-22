@@ -85,7 +85,7 @@ function InfoPanel() {
         ))}
       </motion.div>
 
-      {/* Download CV — cvUrl dari personalInfo (satu sumber kebenaran) */}
+      {/* Get Resume */}
       <motion.div variants={slideInLeft}>
         <a
           href={personalInfo.cvUrl}

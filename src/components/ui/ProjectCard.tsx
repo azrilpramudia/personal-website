@@ -4,7 +4,6 @@ import { scaleIn } from "@/src/lib/animation";
 import type { Project } from "@/src/types";
 
 // ── Tech icon slugs map ───────────────────────────────────────
-// Tambah mapping di sini jika ada tech baru
 const TECH_ICON: Record<string, { slug: string; color: string }> = {
   "Next.js": { slug: "nextdotjs", color: "cad3f5" },
   React: { slug: "react", color: "61DAFB" },
@@ -29,7 +28,7 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   CSS: { slug: "css3", color: "1572B6" },
 };
 
-// ── Tech badge dengan logo ────────────────────────────────────
+// ── Tech badge with logo ────────────────────────────────────
 function TechBadge({ tech }: { tech: string }) {
   const icon = TECH_ICON[tech];
 
@@ -117,7 +116,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         transition: { duration: 0.2 },
       }}
     >
-      {/* Top row: folder icon + featured badge (kanan atas) */}
+      {/* Top row: folder icon + featured badge */}
       <div className="flex items-start justify-between mb-5">
         <FolderIcon />
         {project.featured && (
@@ -127,7 +126,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         )}
       </div>
 
-      {/* Title + links sejajar */}
+      {/* Title + links */}
       <div className="flex items-start justify-between gap-2 mb-2">
         <h3 className="text-macchiato-text font-bold text-base leading-snug group-hover:text-macchiato-mauve transition-colors duration-200">
           {project.title}

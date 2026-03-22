@@ -222,11 +222,11 @@ export function TypingTerminal() {
               {t.text}
             </span>
           ))}
-          {/* Cursor ikut di ujung baris yang sedang diketik */}
+          {/* Cursor Animation blank */}
           {!isDone && lineIndex === lastLineIdx && <Cursor />}
         </p>
       ))}
-      {/* Cursor idle setelah semua selesai */}
+      {/* Cursor idle after done */}
       {isDone && (
         <div className="mt-2">
           <Cursor />
@@ -236,7 +236,6 @@ export function TypingTerminal() {
   );
 }
 
-// ── TerminalLine (static, tetap tersedia jika dibutuhkan) ─────
 export function TerminalLine({ line }: { line: TLine }) {
   if (line.type === "blank") return <div className="h-3" />;
   if (line.type === "prompt")

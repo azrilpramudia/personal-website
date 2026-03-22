@@ -17,6 +17,6 @@ export const personalInfo = {
   availableForWork: true,
   cvUrl: "/cv.pdf",
   githubUrl: "https://github.com/azrilpramudia",
-  linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah",
+  linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah-202a872a6",
   email: "azrilpramudia01@gmail.com",
 };

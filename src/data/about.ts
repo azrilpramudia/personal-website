@@ -7,27 +7,27 @@ export const aboutInfo = {
 export const socials = [
   {
     label: "Facebook",
-    href: "https://facebook.com/username",
+    href: "https://facebook.com/azril.pramudia.01",
     colorClass:
-      "text-[#1877F2] border-[#1877F2]/30 hover:border-[#1877F2]/70 hover:bg-[#1877F2]/10",
+      "text-macchiato-blue border-macchiato-blue/30 hover:border-macchiato-blue/70 hover:bg-macchiato-blue/10",
   },
   {
     label: "GitHub",
-    href: "https://github.com/username",
+    href: "https://github.com/azrilpramudia",
     colorClass:
       "text-macchiato-text border-macchiato-surface2 hover:border-macchiato-overlay1 hover:bg-macchiato-surface0",
   },
   {
     label: "X",
-    href: "https://x.com/username",
+    href: "https://x.com/devwithmeow",
     colorClass:
       "text-macchiato-text border-macchiato-surface2 hover:border-macchiato-overlay1 hover:bg-macchiato-surface0",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/username",
+    href: "https://linkedin.com/in/azril-pramudia-anugrah-202a872a6",
     colorClass:
-      "text-[#0A66C2] border-[#0A66C2]/30 hover:border-[#0A66C2]/70 hover:bg-[#0A66C2]/10",
+      "text-macchiato-blue border-macchiato-blue/30 hover:border-macchiato-blue/70 hover:bg-macchiato-blue/10",
   },
 ];
 

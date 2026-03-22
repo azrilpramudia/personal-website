@@ -1,6 +1,5 @@
 import { Variants } from "framer-motion";
 
-// Fade up biasa — untuk section pakai whileInView + stagger
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
   visible: {
@@ -10,8 +9,6 @@ export const fadeUp: Variants = {
   },
 };
 
-// Fade up dengan delay per-index — untuk animasi satu per satu (Hero, dll)
-// Cara pakai: <motion.p custom={0} variants={fadeUpCustom} initial="hidden" animate="visible" />
 export const fadeUpCustom: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number = 0) => ({
@@ -21,7 +18,6 @@ export const fadeUpCustom: Variants = {
   }),
 };
 
-// Fade in biasa
 export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: {
@@ -30,7 +26,6 @@ export const fadeIn: Variants = {
   },
 };
 
-// Stagger container — parent wrapper
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
@@ -38,7 +33,6 @@ export const staggerContainer: Variants = {
   },
 };
 
-// Slide dari kiri
 export const slideInLeft: Variants = {
   hidden: { opacity: 0, x: -40 },
   visible: {
@@ -48,7 +42,6 @@ export const slideInLeft: Variants = {
   },
 };
 
-// Slide dari kanan
 export const slideInRight: Variants = {
   hidden: { opacity: 0, x: 40 },
   visible: {
@@ -58,7 +51,6 @@ export const slideInRight: Variants = {
   },
 };
 
-// Scale in
 export const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.85 },
   visible: {
