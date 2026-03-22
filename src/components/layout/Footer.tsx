@@ -42,7 +42,7 @@ export default function Footer() {
             onClick={scrollToTop}
             className="flex flex-col items-center md:items-start cursor-pointer group"
           >
-            <span className="font-mono text-macchiato-mauve text-sm font-semibold tracking-wider group-hover:text-macchiato-lavender transition-colors">
+            <span className="font-mono text-macchiato-text text-sm font-semibold tracking-wider group-hover:text-macchiato-lavender transition-colors">
               {personalInfo.username}.dev
             </span>
             <span className="text-macchiato-overlay0 text-xs mt-0.5">
@@ -78,7 +78,7 @@ export default function Footer() {
           {/* Copyright */}
           <p className="font-mono text-xs text-macchiato-overlay0 text-center md:text-left">
             © {currentYear}{" "}
-            <span className="text-macchiato-mauve">{personalInfo.name}</span>.
+            <span className="text-macchiato-text">{personalInfo.name}</span>.
             All rights reserved.
           </p>
 

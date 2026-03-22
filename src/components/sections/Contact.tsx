@@ -167,7 +167,7 @@ export default function Contact() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm leading-relaxed max-w-md"
+            className="text-macchiato-subtext0 text-md leading-relaxed max-w-md"
           >
             I&apos;m always interested in discussing new opportunities,
             collaborations, or just having a chat about technology. Feel free to

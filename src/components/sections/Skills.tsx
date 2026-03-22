@@ -85,7 +85,7 @@ export default function Skills() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-md max-w-md leading-relaxed"
           >
             Here are the frameworks, libraries, services, and runtimes I have
             experience with. This is not a complete list — I&apos;m constantly

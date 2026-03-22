@@ -105,7 +105,7 @@ export default function Projects() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-md max-w-md leading-relaxed"
           >
             A selection of projects I&apos;ve worked on — from personal
             experiments to full applications.

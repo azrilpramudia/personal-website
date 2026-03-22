@@ -289,7 +289,7 @@ export default function Experience() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-sm leading-relaxed"
+            className="text-macchiato-subtext0 text-md leading-relaxed"
           >
             A summary of my past employment and project experience.
           </motion.p>
