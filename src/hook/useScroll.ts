@@ -87,3 +87,16 @@ export function useNavScroll() {
 
   return { scrolled, activeSection };
 }
+
+export function useCopyToClipboard(timeout = 2000) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async (text: string) => {
+    if (copied) return;
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), timeout);
+  };
+
+  return { copied, copy };
+}

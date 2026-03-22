@@ -1,91 +1,20 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, scaleIn } from "@/src/lib/animation";
+import { useCopyToClipboard } from "@/src/hook/useScroll";
+import {
+  EmailIcon,
+  LinkedInIcon,
+  ArrowRightIcon,
+  CopyIcon,
+  CheckIcon,
+  MapPinIcon,
+  ClockIcon,
+} from "@/src/components/ui/Icons";
 import { personalInfo } from "@/src/data/index";
 
-// ── Copy to clipboard hook ────────────────────────────────────
-function useCopyToClipboard(timeout = 2000) {
-  const [copied, setCopied] = useState(false);
-
-  const copy = async (text: string) => {
-    if (copied) return;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), timeout);
-  };
-
-  return { copied, copy };
-}
-
-// ── Icons ─────────────────────────────────────────────────────
-function EmailIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="size-5">
-      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-    </svg>
-  );
-}
-
-function LinkedInIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="size-5">
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
-
-function ArrowIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-4"
-    >
-      <path d="M5 12h14M12 5l7 7-7 7" />
-    </svg>
-  );
-}
-
-function CopyIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-4"
-    >
-      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="size-4"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  );
-}
-
-// ── Email Card — dengan copy to clipboard ─────────────────────
+// ── Email Card ────────────────────────────────────────────────
 function EmailCard({ index }: { index: number }) {
   const { copied, copy } = useCopyToClipboard();
 
@@ -110,7 +39,7 @@ function EmailCard({ index }: { index: number }) {
         className="shrink-0 size-12 rounded-xl flex items-center justify-center text-macchiato-mauve"
         style={{ background: "rgba(198,160,246,0.12)" }}
       >
-        <EmailIcon />
+        <EmailIcon size={20} />
       </div>
 
       {/* Text */}
@@ -123,7 +52,7 @@ function EmailCard({ index }: { index: number }) {
         </p>
       </div>
 
-      {/* Copy button — ganti arrow */}
+      {/* Copy button */}
       <button
         onClick={() => copy(personalInfo.email)}
         aria-label={copied ? "Copied!" : "Copy email"}
@@ -142,7 +71,7 @@ function EmailCard({ index }: { index: number }) {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.15 }}
         >
-          {copied ? <CheckIcon /> : <CopyIcon />}
+          {copied ? <CheckIcon size={15} /> : <CopyIcon size={15} />}
         </motion.span>
       </button>
 
@@ -193,7 +122,7 @@ function LinkedInCard({ index }: { index: number }) {
         className="shrink-0 size-12 rounded-xl flex items-center justify-center text-macchiato-mauve"
         style={{ background: "rgba(198,160,246,0.12)" }}
       >
-        <LinkedInIcon />
+        <LinkedInIcon size={20} />
       </div>
 
       {/* Text */}
@@ -208,7 +137,7 @@ function LinkedInCard({ index }: { index: number }) {
 
       {/* Arrow */}
       <span className="shrink-0 text-macchiato-overlay0 -translate-x-1 group-hover:translate-x-0 group-hover:text-macchiato-mauve transition-all duration-200">
-        <ArrowIcon />
+        <ArrowRightIcon size={15} />
       </span>
     </motion.a>
   );
@@ -281,7 +210,7 @@ export default function Contact() {
           <LinkedInCard index={1} />
         </motion.div>
 
-        {/* Response time + Timezone */}
+        {/* Location + Active hours */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -289,41 +218,13 @@ export default function Contact() {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6"
         >
-          {/* Location + Timezone */}
-          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-macchiato-overlay0">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-3.5 text-macchiato-teal"
-            >
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span className="text-macchiato-teal">
-              Located in Bandung, West Java, Indonesia
-            </span>
+          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-macchiato-teal">
+            <MapPinIcon size={14} />
+            Located in Bandung, West Java, Indonesia
           </span>
-
           <span className="hidden sm:block text-macchiato-surface2">·</span>
-
-          {/* Active hours */}
           <span className="inline-flex items-center gap-1.5 text-xs font-mono text-macchiato-overlay0">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-3.5"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
+            <ClockIcon size={14} />
             Active 08.00 – 00.00 WIB
           </span>
         </motion.div>
