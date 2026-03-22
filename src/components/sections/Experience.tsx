@@ -17,7 +17,6 @@ import type { Experience as ExperienceType } from "@/src/types";
 const FILTERS = ["All", "Full-Time", "Freelance", "Contract"] as const;
 type Filter = (typeof FILTERS)[number];
 
-// Ukuran dot dan lebar line — satu sumber kebenaran
 const DOT_SIZE = 12;
 const LINE_W = 2;
 const LINE_LEFT = DOT_SIZE / 2 - LINE_W / 2;
@@ -131,7 +130,7 @@ function ExperienceItem({
 
   return (
     <div className={cn("relative flex items-start", !isLast && "pb-10")}>
-      {/* Dot — plain div, tanpa animasi sama sekali */}
+      {/* Dot — no animation */}
       <div
         className="relative z-10 shrink-0 mt-4.5"
         style={{
@@ -159,7 +158,7 @@ function ExperienceItem({
         )}
       </div>
 
-      {/* Card — fadeUp animation hanya pada card */}
+      {/* Card — fadeUp only on card */}
       <motion.div
         variants={fadeUp}
         className="flex-1 min-w-0 rounded-xl p-5 transition-colors duration-300"
@@ -205,7 +204,7 @@ function ExperienceItem({
           <span className="text-macchiato-subtext0">{exp.location}</span>
         </div>
 
-        {/* Date · Duration · Active */}
+        {/* Date · Duration */}
         <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-macchiato-overlay0 mb-4">
           <span>
             {exp.startDate} — {exp.endDate}
@@ -290,7 +289,7 @@ export default function Experience() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-medium leading-relaxed"
+            className="text-macchiato-subtext0 text-sm leading-relaxed"
           >
             A summary of my past employment and project experience.
           </motion.p>

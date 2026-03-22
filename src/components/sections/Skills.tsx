@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, scaleIn } from "@/src/lib/animation";
+import { cn } from "@/src/lib/utils";
 import { SkillBadge } from "@/src/components/ui/SkillBadge";
 import { skillCategories, SkillCategory } from "@/src/data/skills";
 
@@ -17,7 +18,11 @@ function CategoryCard({
     <motion.div
       variants={scaleIn}
       custom={index}
-      className="group relative rounded-2xl p-6 flex flex-col gap-5 transition-all duration-300"
+      className={cn(
+        "group relative rounded-2xl p-6",
+        "flex flex-col gap-5",
+        "transition-all duration-300",
+      )}
       style={{
         background: "rgba(36, 39, 58, 0.6)",
         border: "1px solid rgba(91, 96, 120, 0.30)",
@@ -80,11 +85,11 @@ export default function Skills() {
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-macchiato-subtext0 text-medium max-w-md leading-relaxed"
+            className="text-macchiato-subtext0 text-sm max-w-md leading-relaxed"
           >
-            here are the frameworks, libraries, services, and runtimes i have
-            experiences with. this is not a complete list! i&apos;m constantly
-            gaining new skills, and hence it can be a little bit outdated
+            Here are the frameworks, libraries, services, and runtimes I have
+            experience with. This is not a complete list — I&apos;m constantly
+            gaining new skills, so it can be a little bit outdated.
           </motion.p>
         </motion.div>
 
