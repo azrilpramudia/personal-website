@@ -5,26 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { navItems, personalInfo } from "@/src/data/index";
 import { scrollToSection } from "@/src/lib/utils";
 import { useNavScroll } from "@/src/hook/useScroll";
-
-// ── Download icon ─────────────────────────────────────────────
-function DownloadIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
-    </svg>
-  );
-}
+import { DownloadIcon } from "@/src/components/ui/Icons";
 
 // ── Main Navbar ───────────────────────────────────────────────
 export default function Navbar() {
@@ -92,7 +73,7 @@ export default function Navbar() {
               "0 0 12px rgba(198,160,246,0.3), 0 2px 6px rgba(198,160,246,0.15)",
           }}
         >
-          <DownloadIcon />
+          <DownloadIcon size={12} />
           Get Resume
         </a>
       </motion.nav>
@@ -181,7 +162,7 @@ export default function Navbar() {
               onClick={() => setMenuOpen(false)}
               className="w-full flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium cursor-pointer text-macchiato-mauve hover:bg-macchiato-mauve/10 transition-colors duration-150"
             >
-              <DownloadIcon />
+              <DownloadIcon size={12} />
               Get Resume
             </motion.a>
           </motion.div>
