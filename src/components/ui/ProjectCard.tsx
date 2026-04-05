@@ -5,6 +5,8 @@ import type { Project } from "@/src/types";
 
 // ── Tech icon slugs map ───────────────────────────────────────
 const TECH_ICON: Record<string, { slug: string; color: string }> = {
+  "C++": { slug: "cplusplus", color: "00599C" },
+  "Nest.js": { slug: "nestjs", color: "E0234E" },
   "Next.js": { slug: "nextdotjs", color: "cad3f5" },
   React: { slug: "react", color: "61DAFB" },
   "React.js": { slug: "react", color: "61DAFB" },
@@ -18,11 +20,12 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   MySQL: { slug: "mysql", color: "4479A1" },
   Prisma: { slug: "prisma", color: "cad3f5" },
   Docker: { slug: "docker", color: "2496ED" },
+  MQTT: { slug: "mqtt", color: "FFC135" },
   Git: { slug: "git", color: "F05032" },
+  "Socket.io": { slug: "socketdotio", color: "F05032" },
   Linux: { slug: "linux", color: "FCC624" },
   "Shadcn UI": { slug: "shadcnui", color: "cad3f5" },
   "Daisy UI": { slug: "daisyui", color: "FF9903" },
-  WordPress: { slug: "wordpress", color: "21759B" },
   PostgreSQL: { slug: "postgresql", color: "4169E1" },
   HTML: { slug: "html5", color: "E34F26" },
   CSS: { slug: "css3", color: "1572B6" },

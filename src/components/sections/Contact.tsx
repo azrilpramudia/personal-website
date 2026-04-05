@@ -10,7 +10,6 @@ import {
   CopyIcon,
   CheckIcon,
   MapPinIcon,
-  ClockIcon,
 } from "@/src/components/ui/Icons";
 import { personalInfo } from "@/src/data/index";
 
@@ -221,11 +220,6 @@ export default function Contact() {
           <span className="inline-flex items-center gap-1.5 text-xs font-mono text-macchiato-teal">
             <MapPinIcon size={14} />
             Located in Bandung, West Java, Indonesia
-          </span>
-          <span className="hidden sm:block text-macchiato-surface2">·</span>
-          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-macchiato-overlay0">
-            <ClockIcon size={14} />
-            Active 08.00 – 00.00 WIB
           </span>
         </motion.div>
       </div>

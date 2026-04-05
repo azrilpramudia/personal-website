@@ -14,7 +14,13 @@ import { experiences } from "@/src/data/experience";
 import type { Experience as ExperienceType } from "@/src/types";
 
 // ── Constants ─────────────────────────────────────────────────
-const FILTERS = ["All", "Full-Time", "Freelance", "Contract"] as const;
+const FILTERS = [
+  "All",
+  "Full-Time",
+  "Freelance",
+  "Contract",
+  "Internship",
+] as const;
 type Filter = (typeof FILTERS)[number];
 
 const DOT_SIZE = 12;

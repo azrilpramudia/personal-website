@@ -3,36 +3,46 @@ import type { Project } from "@/src/types";
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "Personal Portfolio",
+    title: "Air Quality Monitoring Dashboard",
     description:
-      "Website portfolio pribadi yang dibangun dengan Next.js, Tailwind CSS, dan Framer Motion. Menampilkan project dan skill secara profesional.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      "Dashboard to monitor air quality in real-time with data from IoT sensors.",
+    techStack: [
+      "C++",
+      "Nest.js",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MySQL",
+      "MQTT",
+      "Socket.io",
+      "Prisma",
+      "Docker",
+    ],
     imageUrl: "/images/projects/portfolio.png",
     liveUrl: "https://yourportfolio.com",
-    githubUrl: "https://github.com/username/portfolio",
+    githubUrl:
+      "https://github.com/azrilpramudia/air-quality-monitoring-rebuild",
     featured: true,
-    year: 2025,
   },
   {
     id: "project-2",
-    title: "Project Kedua",
+    title: "Himatif Uninus Website",
     description:
-      "Deskripsi singkat project kedua kamu di sini. Ceritakan apa yang dibangun dan masalah apa yang diselesaikan.",
-    techStack: ["React", "Node.js", "MongoDB"],
+      "The official website for the Informatics Engineering Student Association of Nusantara Islamic University (Himatif Uninus) which provides information about organizations, activities, and resources for students.",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://yourportfolio.com",
     githubUrl: "https://github.com/username/project-2",
-    featured: true,
-    year: 2024,
+    featured: false,
   },
   {
     id: "project-3",
-    title: "Project Ketiga",
+    title: "Hidroakuaponik Agriculture Website",
     description:
-      "Deskripsi singkat project ketiga kamu di sini. Ceritakan apa yang dibangun dan masalah apa yang diselesaikan.",
-    techStack: ["Next.js", "MySQL", "Prisma"],
+      "A web application for managing and monitoring a hidroakuaponik agriculture system, allowing users to track plant growth, water quality, and system performance.",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://project-3.com",
     githubUrl: "https://github.com/username/project-3",
     featured: false,
-    year: 2024,
   },
 ];
 

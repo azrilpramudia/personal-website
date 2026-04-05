@@ -8,7 +8,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
-  year: number;
+  year?: number;
 }
 
 export type ExperienceType =

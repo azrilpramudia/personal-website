@@ -43,11 +43,11 @@ export default function Footer() {
             className="flex flex-col items-center md:items-start cursor-pointer group"
           >
             <span className="font-mono text-macchiato-text text-sm font-semibold tracking-wider group-hover:text-macchiato-lavender transition-colors">
-              {personalInfo.username}.dev
+              {personalInfo.username}
             </span>
-            <span className="text-macchiato-overlay0 text-xs mt-0.5">
+            {/* <span className="text-macchiato-overlay0 text-xs mt-0.5">
               {personalInfo.title}
-            </span>
+            </span> */}
           </button>
 
           {/* Nav links */}
