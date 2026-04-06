@@ -18,8 +18,7 @@ export const projects: Project[] = [
       "Prisma",
       "Docker",
     ],
-    imageUrl: "/images/projects/portfolio.png",
-    liveUrl: "https://yourportfolio.com",
+    liveUrl: "https://air-quality-monitor-amber.vercel.app/dashboard",
     githubUrl:
       "https://github.com/azrilpramudia/air-quality-monitoring-rebuild",
     featured: true,
