@@ -17,6 +17,7 @@ import type { Experience as ExperienceType } from "@/src/types";
 const FILTERS = [
   "All",
   "Full-Time",
+  "Part-Time",
   "Freelance",
   "Contract",
   "Internship",
