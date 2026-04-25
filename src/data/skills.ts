@@ -36,6 +36,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "MySQL", iconSlug: "mysql", color: "#4479A1" },
       { name: "MongoDB", iconSlug: "mongodb", color: "#47A248" },
       { name: "Prisma", iconSlug: "prisma", color: "#cad3f5" },
+      { name: "Supabase", iconSlug: "supabase", color: "#3ECF8E" },
     ],
   },
   {
