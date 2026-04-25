@@ -47,6 +47,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "Docker", iconSlug: "docker", color: "#2496ED" },
       { name: "Git", iconSlug: "git", color: "#F05032" },
       { name: "Linux", iconSlug: "linux", color: "#FCC624" },
+      { name: "GNU Bash", iconSlug: "bash", color: "#4EAA25" },
       { name: "Network Fundamental", customIcon: "⬡", color: "#8bd5ca" },
     ],
   },
