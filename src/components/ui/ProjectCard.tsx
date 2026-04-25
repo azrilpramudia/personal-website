@@ -29,6 +29,7 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   PostgreSQL: { slug: "postgresql", color: "4169E1" },
   HTML: { slug: "html5", color: "E34F26" },
   CSS: { slug: "css3", color: "1572B6" },
+  Supabase: { slug: "supabase", color: "3ECF8E" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────

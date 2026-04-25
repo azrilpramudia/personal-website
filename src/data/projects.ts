@@ -28,7 +28,13 @@ export const projects: Project[] = [
     title: "Himatif Uninus Website",
     description:
       "The official website for the Informatics Engineering Student Association of Nusantara Islamic University (Himatif Uninus) which provides information about organizations, activities, and resources for students.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion, Supabase"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Supabase",
+    ],
     liveUrl: "https://azrilpramudia-himatif-uninus-qzv8.vercel.app/",
     githubUrl: "https://github.com/azrilpramudia/himatif-uninus",
     featured: false,
