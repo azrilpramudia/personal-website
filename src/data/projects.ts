@@ -49,6 +49,26 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/username/project-3",
     featured: false,
   },
+  {
+    id: "project-4",
+    title: "Container as Service Cloud Hosting",
+    description:
+      "A User Interface for automation container as service cloud hosting",
+    techStack: [
+      "Next.js",
+      "Nest.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Socket.io",
+      "Xterm.js",
+      "Docker",
+      "Prisma",
+    ],
+    liveUrl: "https://project-3.com",
+    githubUrl: "https://github.com/username/project-3",
+    featured: true,
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);

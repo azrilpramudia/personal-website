@@ -9,7 +9,6 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   "Nest.js": { slug: "nestjs", color: "E0234E" },
   "Next.js": { slug: "nextdotjs", color: "cad3f5" },
   React: { slug: "react", color: "61DAFB" },
-  "React.js": { slug: "react", color: "61DAFB" },
   TypeScript: { slug: "typescript", color: "3178C6" },
   JavaScript: { slug: "javascript", color: "F7DF1E" },
   "Tailwind CSS": { slug: "tailwindcss", color: "06B6D4" },
@@ -30,6 +29,7 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   HTML: { slug: "html5", color: "E34F26" },
   CSS: { slug: "css3", color: "1572B6" },
   Supabase: { slug: "supabase", color: "3ECF8E" },
+  "Xterm.js": { slug: "gnometerminal", color: "FCC624" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────
