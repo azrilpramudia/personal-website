@@ -30,6 +30,8 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   CSS: { slug: "css3", color: "1572B6" },
   Supabase: { slug: "supabase", color: "3ECF8E" },
   "Xterm.js": { slug: "gnometerminal", color: "FCC624" },
+  Hono: { slug: "hono", color: "E36002" },
+  Drizzle: { slug: "drizzle", color: "C5F74F" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────

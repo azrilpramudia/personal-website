@@ -69,6 +69,24 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/username/project-3",
     featured: true,
   },
+  {
+    id: "project-5",
+    title: "MintDocs AI",
+    description:
+      "An AI-powered developer workspace platform designed to automate code documentation. Built with Bun, Hono, Drizzle ORM, and React, powered by Gemini API.",
+    techStack: [
+      "React",
+      "Hono",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Docker",
+      "Drizzle",
+    ],
+    liveUrl: "https://project-3.com",
+    githubUrl: "https://github.com/azrilpramudia/MintDocs-AI",
+    featured: true,
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
