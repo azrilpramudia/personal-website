@@ -15,7 +15,7 @@ export const personalInfo = {
   tagline: "Crafting Code for a Connected Infrastructure.",
   location: "Bandung, West Java, Indonesia",
   availableForWork: true,
-  cvUrl: "/azrilpramudia.pdf",
+  cvUrl: "/azrilpramudia-resume.pdf",
   githubUrl: "https://github.com/azrilpramudia",
   linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah-202a872a6",
   email: "azrilpramudia01@gmail.com",
