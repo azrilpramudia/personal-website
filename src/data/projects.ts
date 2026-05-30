@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "Framer Motion",
       "Supabase",
     ],
-    liveUrl: "https://azrilpramudia-himatif-uninus-qzv8.vercel.app/",
+    liveUrl: "https://himatif-uninus-sigma.vercel.app/",
     githubUrl: "https://github.com/azrilpramudia/himatif-uninus",
     featured: false,
   },
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     id: "project-4",
     title: "Container as Service Cloud Hosting",
     description:
-      "A User Interface for automation container as service cloud hosting",
+      "Automated Container-as-a-Service (CaaS) platform for cloud hosting orchestration using Docker Engine API",
     techStack: [
       "Next.js",
       "Nest.js",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
       "Prisma",
     ],
     liveUrl: "https://project-3.com",
-    githubUrl: "https://github.com/username/project-3",
+    githubUrl: "https://github.com/azrilpramudia/portdock-caas",
     featured: true,
   },
   {
