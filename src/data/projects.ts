@@ -83,8 +83,8 @@ export const projects: Project[] = [
       "Docker",
       "Drizzle",
     ],
-    liveUrl: "https://project-3.com",
-    githubUrl: "https://github.com/azrilpramudia/MintDocs-AI",
+    liveUrl: "https://mint-docs-ai-v1.vercel.app/",
+    githubUrl: "https://github.com/azrilpramudia/MintDocs-AI-v1",
     featured: true,
   },
 ];
