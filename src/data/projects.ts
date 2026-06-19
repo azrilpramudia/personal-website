@@ -41,17 +41,17 @@ export const projects: Project[] = [
   },
   {
     id: "project-3",
-    title: "Hidroakuaponik Agriculture Website",
+    title: "Hidropedia Platform",
     description:
       "A web application for managing and monitoring a hidroakuaponik agriculture system, allowing users to track plant growth, water quality, and system performance.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "https://project-3.com",
-    githubUrl: "https://github.com/username/project-3",
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    liveUrl: "https://hidropedia-platform.vercel.app/",
+    githubUrl: "https://github.com/azrilpramudia/hidropedia-platform",
     featured: false,
   },
   {
     id: "project-4",
-    title: "Container as Service Cloud Hosting",
+    title: "Portdock Container as a Service",
     description:
       "Automated Container-as-a-Service (CaaS) platform for cloud hosting orchestration using Docker Engine API",
     techStack: [
