@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "meowhx.dev",
+  title: "meowhx",
   description: "Personal Website",
 };
 
