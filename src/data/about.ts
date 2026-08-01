@@ -1,5 +1,5 @@
 export const aboutInfo = {
-  specialization: "Frontend Developer & Computer Network",
+  specialization: "Backend Developer",
   basedIn: "Bandung, West Java, Indonesia",
 };
 
@@ -54,19 +54,19 @@ export const terminalLines: TerminalLine[] = [
     parts: [
       { text: "I am a ", style: "normal" },
       {
-        text: "developer focused on the JavaScript ecosystem",
+        text: "backend developer focused on Go",
         style: "accent",
       },
       {
-        text: ", spent the last 3 months diving deep into its fundamentals. I use this to build with ",
+        text: ", building efficient and scalable RESTful APIs. I work with ",
         style: "normal",
       },
-      { text: "React", style: "tag" },
+      { text: "PostgreSQL", style: "tag" },
       { text: ", ", style: "normal" },
-      { text: "TypeScript", style: "tag" },
+      { text: "MySQL", style: "tag" },
       { text: ", and ", style: "normal" },
-      { text: "Tailwind CSS", style: "tag" },
-      { text: ".", style: "normal" },
+      { text: "Prisma ORM", style: "tag" },
+      { text: " for database design and management.", style: "normal" },
     ],
   },
   { type: "blank" },
@@ -74,16 +74,16 @@ export const terminalLines: TerminalLine[] = [
   {
     type: "body",
     parts: [
-      { text: "Hardening my skills in ", style: "normal" },
+      { text: "Deep-diving into ", style: "normal" },
+      { text: "Go", style: "badge" },
+      { text: " fundamentals, hardening my skills in ", style: "normal" },
       { text: "Docker", style: "badge" },
       { text: ", ", style: "normal" },
       { text: "Linux Server", style: "badge" },
       { text: ", and ", style: "normal" },
-      { text: "Bash", style: "badge" },
-      { text: ". Exploring ", style: "normal" },
-      { text: "PostgreSQL", style: "tag" },
+      { text: "Git", style: "badge" },
       {
-        text: " for data persistence and obsessed with how apps work across the ",
+        text: ". Obsessed with how backend systems communicate across the ",
         style: "normal",
       },
       { text: "network", style: "tag" },

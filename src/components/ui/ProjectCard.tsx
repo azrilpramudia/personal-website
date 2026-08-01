@@ -32,6 +32,7 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   "Xterm.js": { slug: "gnometerminal", color: "FCC624" },
   Hono: { slug: "hono", color: "E36002" },
   Drizzle: { slug: "drizzle", color: "C5F74F" },
+  go: { slug: "go", color: "00ADD8" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────

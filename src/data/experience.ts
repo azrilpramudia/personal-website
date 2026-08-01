@@ -3,7 +3,7 @@ import type { Experience } from "@/src/types";
 export const experiences: Experience[] = [
   {
     id: "exp-1",
-    role: "IoT Engineer Intern",
+    role: "IoT Engineer Intern - Backend & Systems Integration Focus",
     company: "PT. Langgeng Cipta Solusi",
     location: "Bandung, West Java, Indonesia",
     type: "Internship",
@@ -52,7 +52,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "exp-3",
-    role: "Computer Network Engineer",
+    role: "Network Engineer Intern",
     company: "CV. Walatra Infotech Service",
     location: "Bandung, West Java, Indonesia",
     type: "Internship",

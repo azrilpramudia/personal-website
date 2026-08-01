@@ -4,35 +4,14 @@ import { motion } from "framer-motion";
 import { fadeUpCustom } from "@/src/lib/animation";
 import { scrollToSection } from "@/src/lib/utils";
 import { ArrowRightIcon } from "@/src/components/ui/Icons";
+import { personalInfo } from "@/src/data";
 import Button from "@/src/components/ui/Button";
+import ScrollArrow from "@/src/components/ui/ScrollArrow";
 
 // ── Data ──────────────────────────────────────────────────────
 const dots = ["bg-macchiato-red", "bg-macchiato-yellow", "bg-macchiato-green"];
 
-// ── Scroll arrow SVG ──────────────────────────────────────────
-function ScrollArrow() {
-  return (
-    <svg width="20" height="32" viewBox="0 0 20 32" fill="none">
-      <line
-        x1="10"
-        y1="1"
-        x2="10"
-        y2="24"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <path
-        d="M3 18 L10 26 L17 18"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        fill="none"
-      />
-    </svg>
-  );
-}
+<ScrollArrow />;
 
 // ── Main section ──────────────────────────────────────────────
 export default function Hero() {
@@ -80,9 +59,9 @@ export default function Hero() {
           className="text-macchiato-text font-extrabold tracking-tight leading-tight mb-6"
           style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)" }}
         >
-          Crafting Code for a{" "}
-          <span className="text-macchiato-blue">&#123;Connected&#125;</span>{" "}
-          Infrastructure
+          Building{" "}
+          <span className="text-macchiato-blue">&#123;Backend&#125;</span>{" "}
+          Systems for a Connected World
         </motion.h1>
 
         {/* Description */}
@@ -93,11 +72,7 @@ export default function Hero() {
           animate="visible"
           className="text-macchiato-subtext1 text-base md:text-lg leading-relaxed max-w-2xl mb-10"
         >
-          Final-year IT Student & Passionate React, JavaScript, Tailwind. A
-          Linux enthusiast exploring the depths of Docker and Network
-          Infrastructure. Over the last 3 months, I have undergone an intensive
-          deep-dive into the modern web ecosystem, transforming core
-          fundamentals into scalable digital solutions.
+          {personalInfo.description}
         </motion.p>
 
         {/* CTA Buttons */}

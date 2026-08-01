@@ -9,10 +9,12 @@ export const navItems: NavItem[] = [
 ];
 
 export const personalInfo = {
-  name: "Azril Pramudia",
+  // name: "Azril Pramudia",
   username: "meowhx",
-  title: "Frontend Developer",
-  tagline: "Crafting Code for a Connected Infrastructure.",
+  title: "Backend Developer",
+  // tagline: "Building Backend Systems for a Connected World.",
+  description:
+    "Final-year Informatics Engineering student focused on Backend Development with Go, building efficient and scalable RESTful APIs. Experienced with PostgreSQL, MySQL, and Prisma ORM for database design, and comfortable working with Docker, Linux, and Git for clean, reliable backend workflows.",
   location: "Bandung, West Java, Indonesia",
   availableForWork: true,
   cvUrl: "/azrilpramudia-resume.pdf",
