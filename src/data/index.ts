@@ -9,7 +9,7 @@ export const navItems: NavItem[] = [
 ];
 
 export const personalInfo = {
-  // name: "Azril Pramudia",
+  name: "Azril Pramudia",
   username: "meowhx",
   title: "Backend Developer",
   // tagline: "Building Backend Systems for a Connected World.",
