@@ -60,8 +60,8 @@ export default function Hero() {
           style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)" }}
         >
           Building{" "}
-          <span className="text-macchiato-blue">&#123;Backend&#125;</span>{" "}
-          Systems for a Connected World
+          <span className="text-macchiato-blue">&#123;Systems&#125;</span>{" "}
+          for a Connected World
         </motion.h1>
 
         {/* Description */}
