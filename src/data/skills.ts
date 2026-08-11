@@ -14,13 +14,15 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Backend",
+    title: "Languages & Runtimes",
     icon: "◈",
     accent: "rgba(138,173,244,0.25)",
     skills: [
       { name: "GO", iconSlug: "go", color: "#00ADD8" },
       { name: "Node.js", iconSlug: "nodedotjs", color: "#5FA04E" },
       { name: "JavaScript ES6+", iconSlug: "javascript", color: "#F7DF1E" },
+      { name: "HTML5", iconSlug: "html5", color: "#E34F26" },
+      { name: "CSS3", iconSlug: "css", color: "#663399" },
     ],
   },
   {
@@ -32,6 +34,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "PostgreSQL", iconSlug: "postgresql", color: "#4169E1" },
       { name: "Prisma ORM", iconSlug: "prisma", color: "#cad3f5" },
       { name: "Supabase", iconSlug: "supabase", color: "#3ECF8E" },
+      { name: "SQLite", iconSlug: "sqlite", color: "#003B57" },
     ],
   },
   {

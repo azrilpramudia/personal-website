@@ -40,16 +40,6 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "project-3",
-    title: "Hidropedia Platform",
-    description:
-      "A web application for managing and monitoring a hidroakuaponik agriculture system, allowing users to track plant growth, water quality, and system performance.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    liveUrl: "https://hidropedia-platform.vercel.app/",
-    githubUrl: "https://github.com/azrilpramudia/hidropedia-platform",
-    featured: false,
-  },
-  {
     id: "project-4",
     title: "Portdock Container as a Service",
     description:
@@ -67,24 +57,6 @@ export const projects: Project[] = [
     ],
     liveUrl: "https://project-3.com",
     githubUrl: "https://github.com/azrilpramudia/portdock-caas",
-    featured: true,
-  },
-  {
-    id: "project-5",
-    title: "MintDocs AI",
-    description:
-      "An AI-powered developer workspace platform designed to automate code documentation. Built with Bun, Hono, Drizzle ORM, and React, powered by Gemini API.",
-    techStack: [
-      "React",
-      "Hono",
-      "TypeScript",
-      "Tailwind CSS",
-      "Shadcn UI",
-      "Docker",
-      "Drizzle",
-    ],
-    liveUrl: "https://mint-docs-ai-v1.vercel.app/",
-    githubUrl: "https://github.com/azrilpramudia/MintDocs-AI-v1",
     featured: true,
   },
 ];
