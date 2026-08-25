@@ -3,24 +3,12 @@ import type { Project } from "@/src/types";
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "Air Quality Monitoring Dashboard",
+    title: "Go Job Queue & Worker Pool System",
     description:
-      "Dashboard to monitor air quality in real-time with data from IoT sensors.",
-    techStack: [
-      "C++",
-      "Nest.js",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "MySQL",
-      "MQTT",
-      "Socket.io",
-      "Prisma",
-      "Docker",
-    ],
-    liveUrl: "https://air-quality-monitor-amber.vercel.app/dashboard",
-    githubUrl:
-      "https://github.com/azrilpramudia/air-quality-monitoring-rebuild",
+      "A high-performance job queue and worker pool system implemented in Go, designed for efficient task processing and concurrency management.",
+    techStack: ["Go"],
+    liveUrl: "https://project-1.com",
+    githubUrl: "https://github.com/azrilpramudia/go-job-queue",
     featured: true,
   },
   {
@@ -40,7 +28,7 @@ export const projects: Project[] = [
     featured: false,
   },
   {
-    id: "project-4",
+    id: "project-3",
     title: "Portdock Container as a Service",
     description:
       "Automated Container-as-a-Service (CaaS) platform for cloud hosting orchestration using Docker Engine API",
@@ -49,9 +37,7 @@ export const projects: Project[] = [
       "Nest.js",
       "TypeScript",
       "Tailwind CSS",
-      "Shadcn UI",
       "Socket.io",
-      "Xterm.js",
       "Docker",
       "Prisma",
     ],

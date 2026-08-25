@@ -12,7 +12,6 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   TypeScript: { slug: "typescript", color: "3178C6" },
   JavaScript: { slug: "javascript", color: "F7DF1E" },
   "Tailwind CSS": { slug: "tailwindcss", color: "06B6D4" },
-  TailwindCSS: { slug: "tailwindcss", color: "06B6D4" },
   "Framer Motion": { slug: "framer", color: "cad3f5" },
   "Node.js": { slug: "nodedotjs", color: "5FA04E" },
   MongoDB: { slug: "mongodb", color: "47A248" },
@@ -23,16 +22,13 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   Git: { slug: "git", color: "F05032" },
   "Socket.io": { slug: "socketdotio", color: "F05032" },
   Linux: { slug: "linux", color: "FCC624" },
-  "Shadcn UI": { slug: "shadcnui", color: "cad3f5" },
-  "Daisy UI": { slug: "daisyui", color: "FF9903" },
   PostgreSQL: { slug: "postgresql", color: "4169E1" },
   HTML: { slug: "html5", color: "E34F26" },
   CSS: { slug: "css3", color: "1572B6" },
   Supabase: { slug: "supabase", color: "3ECF8E" },
-  "Xterm.js": { slug: "gnometerminal", color: "FCC624" },
-  Hono: { slug: "hono", color: "E36002" },
   Drizzle: { slug: "drizzle", color: "C5F74F" },
-  go: { slug: "go", color: "00ADD8" },
+  Go: { slug: "go", color: "00ADD8" },
+  Redis: { slug: "redis", color: "FF4438" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────
