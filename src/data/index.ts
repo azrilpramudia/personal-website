@@ -14,10 +14,10 @@ export const personalInfo = {
   title: "Backend Developer",
   // tagline: "Building Backend Systems for a Connected World.",
   description:
-    "Final-year Informatics Engineering student focused on Backend Development with Go, building efficient and scalable RESTful APIs. Experienced with PostgreSQL, MySQL, and Prisma ORM for database design, and comfortable working with Docker, Linux, and Git for clean, reliable backend workflows.",
+    "Fresh Graduate Informatics Engineering student focused on Backend Development with Go, building efficient and scalable RESTful APIs. Experienced with PostgreSQL, MySQL, and Prisma ORM for database design, and comfortable working with Docker, Linux, and Git for clean, reliable backend workflows.",
   location: "Bandung, West Java, Indonesia",
   availableForWork: true,
-  cvUrl: "/azrilpramudia-resume.pdf",
+  cvUrl: "/Azril_Pramudia_Anugrah_Resume.pdf",
   githubUrl: "https://github.com/azrilpramudia",
   linkedinUrl: "https://linkedin.com/in/azril-pramudia-anugrah-202a872a6",
   email: "azrilpramudia01@gmail.com",

@@ -41,10 +41,47 @@ export const projects: Project[] = [
       "Docker",
       "Prisma",
     ],
-    liveUrl: "https://project-3.com",
+    liveUrl: "https://portdock-cloud.vercel.app/",
     githubUrl: "https://github.com/azrilpramudia/portdock-caas",
     featured: true,
   },
+  // {
+  //   id: "project-4",
+  //   title: "Air Quality Monitoring System",
+  //   description:
+  //     "A real-time air quality monitoring system that collects and displays data from various sensors deployed in urban areas.",
+  //   techStack: [
+  //     "C++",
+  //     "Go",
+  //     "Next.js",
+  //     "TypeScript",
+  //     "Tailwind CSS",
+  //     "MQTT",
+  //     "Socket.io",
+  //     "Docker",
+  //     "MySQL",
+  //   ],
+  //   liveUrl: "https://portdock-cloud.vercel.app/",
+  //   githubUrl: "https://github.com/azrilpramudia/portdock-caas",
+  //   featured: false,
+  // },
+  // {
+  //   id: "project-5",
+  //   title: "PustakaKu - Digital Library System",
+  //   description:
+  //     "A digital library system for managing and accessing books and resources online",
+  //   techStack: [
+  //     "Go",
+  //     "Next.js",
+  //     "TypeScript",
+  //     "Tailwind CSS",
+  //     "PostgreSQL",
+  //     "Docker",
+  //   ],
+  //   liveUrl: "https://portdock-cloud.vercel.app/",
+  //   githubUrl: "https://github.com/azrilpramudia/portdock-caas",
+  //   featured: true,
+  // },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
