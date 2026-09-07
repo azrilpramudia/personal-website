@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Docker",
       "Prisma",
     ],
-    liveUrl: "https://portdock-cloud.vercel.app/",
+    liveUrl: "https://portdock.my.id",
     githubUrl: "https://github.com/azrilpramudia/portdock-caas",
     featured: true,
   },
