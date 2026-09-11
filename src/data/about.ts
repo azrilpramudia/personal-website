@@ -19,7 +19,7 @@ export const socials = [
   },
   {
     label: "X",
-    href: "https://x.com/devwithmeow",
+    href: "https://x.com/meowhx_dev",
     colorClass:
       "text-macchiato-text border-macchiato-surface2 hover:border-macchiato-overlay1 hover:bg-macchiato-surface0",
   },
