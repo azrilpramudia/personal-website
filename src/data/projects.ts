@@ -23,7 +23,7 @@ export const projects: Project[] = [
       "Framer Motion",
       "Supabase",
     ],
-    liveUrl: "https://himatif-uninus-sigma.vercel.app/",
+    liveUrl: "https://himatifuninus.meowhx.my.id",
     githubUrl: "https://github.com/azrilpramudia/himatif-uninus",
     featured: false,
   },
