@@ -13,16 +13,10 @@ export const projects: Project[] = [
   },
   {
     id: "project-2",
-    title: "Himatif Uninus Website",
+    title: "Himatif Uninus",
     description:
       "The official website for the Informatics Engineering Student Association of Nusantara Islamic University (Himatif Uninus) which provides information about organizations, activities, and resources for students.",
-    techStack: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Supabase",
-    ],
+    techStack: ["Go", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://himatifuninus.meowhx.my.id",
     githubUrl: "https://github.com/azrilpramudia/himatif-uninus",
     featured: false,
@@ -67,7 +61,7 @@ export const projects: Project[] = [
   // },
   // {
   //   id: "project-5",
-  //   title: "PustakaKu - Digital Library System",
+  //   title: "LibreGo - Digital Library System",
   //   description:
   //     "A digital library system for managing and accessing books and resources online",
   //   techStack: [
