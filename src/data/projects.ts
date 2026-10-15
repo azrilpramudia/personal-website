@@ -3,12 +3,22 @@ import type { Project } from "@/src/types";
 export const projects: Project[] = [
   {
     id: "project-1",
-    title: "Go Job Queue & Worker Pool System",
+    title: "Air Quality Monitoring System",
     description:
-      "A high-performance job queue and worker pool system implemented in Go, designed for efficient task processing and concurrency management.",
-    techStack: ["Go"],
-    liveUrl: "https://project-1.com",
-    githubUrl: "https://github.com/azrilpramudia/go-job-queue",
+      "A real-time air quality monitoring system that collects and displays data from various sensors deployed in urban areas.",
+    techStack: [
+      "C++",
+      "Go",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "MQTT",
+      "Socket.io",
+      "Docker",
+      "MySQL",
+    ],
+    liveUrl: "https://test",
+    githubUrl: "https://github.com/azrilpramudia/air-quality-monitoring-system",
     featured: true,
   },
   {
@@ -39,26 +49,6 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/azrilpramudia/portdock-caas",
     featured: true,
   },
-  // {
-  //   id: "project-4",
-  //   title: "Air Quality Monitoring System",
-  //   description:
-  //     "A real-time air quality monitoring system that collects and displays data from various sensors deployed in urban areas.",
-  //   techStack: [
-  //     "C++",
-  //     "Go",
-  //     "Next.js",
-  //     "TypeScript",
-  //     "Tailwind CSS",
-  //     "MQTT",
-  //     "Socket.io",
-  //     "Docker",
-  //     "MySQL",
-  //   ],
-  //   liveUrl: "https://portdock-cloud.vercel.app/",
-  //   githubUrl: "https://github.com/azrilpramudia/portdock-caas",
-  //   featured: false,
-  // },
   // {
   //   id: "project-5",
   //   title: "LibreGo - Digital Library System",
