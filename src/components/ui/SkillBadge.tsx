@@ -1,30 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
 import { cn } from "@/src/lib/utils";
 import { Skill } from "@/src/data/skills";
+import { techIcons } from "@/src/data/tech-icons";
 
 function SkillIcon({ skill }: { skill: Skill }) {
-  if (skill.iconSlug) {
-    const hex = skill.color.replace("#", "");
+  const icon = techIcons[skill.name];
+
+  if (icon) {
     return (
-      <img
-        src={`https://cdn.simpleicons.org/${skill.iconSlug}/${hex}`}
-        alt={skill.name}
-        width={15}
-        height={15}
-        className="shrink-0"
-        onError={(e) => {
-          const img = e.currentTarget;
-          img.style.display = "none";
-          img.nextElementSibling?.classList.remove("hidden");
-        }}
-      />
+      <>
+        <img
+          src={`https://cdn.simpleicons.org/${icon.slug}/${icon.color}`}
+          alt={skill.name}
+          width={15}
+          height={15}
+          className="shrink-0"
+          onError={(e) => {
+            const img = e.currentTarget;
+            img.style.display = "none";
+            img.nextElementSibling?.classList.remove("hidden");
+          }}
+        />
+        <span
+          className="hidden size-1.5 rounded-full shrink-0"
+          style={{ background: `#${icon.color}` }}
+        />
+      </>
     );
   }
 
   return (
     <span
       className="size-3.5 shrink-0 flex items-center justify-center text-xs leading-none"
-      style={{ color: skill.color }}
+      style={{ color: skill.color ?? "currentColor" }}
     >
       {skill.customIcon ?? "◆"}
     </span>
@@ -48,10 +56,6 @@ export function SkillBadge({ skill }: SkillBadgeProps) {
     >
       <SkillIcon skill={skill} />
 
-      <span
-        className="hidden size-1.5 rounded-full shrink-0"
-        style={{ background: skill.color }}
-      />
       {skill.name}
     </span>
   );

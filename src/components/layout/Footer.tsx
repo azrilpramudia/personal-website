@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { fadeUp } from "@/src/lib/animation";
 import { personalInfo, navItems } from "@/src/data/index";
 import {
   GithubIcon,
@@ -30,11 +28,7 @@ export default function Footer() {
     <footer className="bg-macchiato-mantle border-t border-macchiato-surface0">
       <div className="max-w-5xl mx-auto px-6 py-12">
         {/* Top row: brand + nav links */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
           className="flex flex-col md:flex-row items-center justify-between gap-6 mb-8"
         >
           {/* Brand */}
@@ -62,17 +56,13 @@ export default function Footer() {
               </button>
             ))}
           </nav>
-        </motion.div>
+        </div>
 
         {/* Divider */}
         <div className="h-px bg-macchiato-surface0 mb-8" />
 
         {/* Bottom row: copyright + social */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+        <div
           className="flex flex-col md:flex-row items-center justify-between gap-4"
         >
           {/* Copyright */}
@@ -109,7 +99,7 @@ export default function Footer() {
               <ChevronUpIcon size={15} />
             </button>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

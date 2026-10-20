@@ -1,0 +1,40 @@
+export interface TechIcon {
+  slug: string;
+  color: string;
+}
+
+export const techIcons: Record<string, TechIcon> = {
+  "C++": { slug: "cplusplus", color: "00599C" },
+  "Nest.js": { slug: "nestjs", color: "E0234E" },
+  "Next.js": { slug: "nextdotjs", color: "cad3f5" },
+  React: { slug: "react", color: "61DAFB" },
+  TypeScript: { slug: "typescript", color: "3178C6" },
+  JavaScript: { slug: "javascript", color: "F7DF1E" },
+  "JavaScript ES6+": { slug: "javascript", color: "F7DF1E" },
+  "Tailwind CSS": { slug: "tailwindcss", color: "06B6D4" },
+  "Framer Motion": { slug: "framer", color: "cad3f5" },
+  "Node.js": { slug: "nodedotjs", color: "5FA04E" },
+  MongoDB: { slug: "mongodb", color: "47A248" },
+  MySQL: { slug: "mysql", color: "4479A1" },
+  Prisma: { slug: "prisma", color: "cad3f5" },
+  "Prisma ORM": { slug: "prisma", color: "cad3f5" },
+  Docker: { slug: "docker", color: "2496ED" },
+  MQTT: { slug: "mqtt", color: "FFC135" },
+  Git: { slug: "git", color: "F05032" },
+  "Socket.io": { slug: "socketdotio", color: "F05032" },
+  Linux: { slug: "linux", color: "FCC624" },
+  PostgreSQL: { slug: "postgresql", color: "4169E1" },
+  HTML: { slug: "html5", color: "E34F26" },
+  HTML5: { slug: "html5", color: "E34F26" },
+  CSS: { slug: "css3", color: "1572B6" },
+  CSS3: { slug: "css", color: "663399" },
+  Supabase: { slug: "supabase", color: "3ECF8E" },
+  Drizzle: { slug: "drizzle", color: "C5F74F" },
+  Go: { slug: "go", color: "00ADD8" },
+  GO: { slug: "go", color: "00ADD8" },
+  Redis: { slug: "redis", color: "FF4438" },
+  Svelte: { slug: "svelte", color: "FF3E00" },
+  SQLite: { slug: "sqlite", color: "003B57" },
+  Nginx: { slug: "nginx", color: "009639" },
+  Cloudflare: { slug: "cloudflare", color: "F38020" },
+};

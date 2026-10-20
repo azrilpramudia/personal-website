@@ -1,22 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { navItems, personalInfo } from "@/src/data/index";
-import { scrollToSection } from "@/src/lib/utils";
 import { useNavScroll, useScrollDirection } from "@/src/hook/useScroll";
-import { DownloadIcon } from "@/src/components/ui/Icons";
 
 // ── Main Navbar ───────────────────────────────────────────────
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
   const { scrolled, activeSection } = useNavScroll();
   const scrollDirection = useScrollDirection();
-
-  const handleNavClick = (href: string) => {
-    scrollToSection(href.replace("#", ""));
-    setMenuOpen(false);
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-5 px-4">
@@ -40,9 +36,9 @@ export default function Navbar() {
         {navItems.map((item) => {
           const isActive = activeSection === item.href.replace("#", "");
           return (
-            <button
+            <Link
               key={item.href}
-              onClick={() => handleNavClick(item.href)}
+              href={pathname === "/" ? item.href : `/${item.href}`}
               className={[
                 "relative cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200",
                 isActive
@@ -59,24 +55,30 @@ export default function Navbar() {
                 />
               )}
               <span className="relative z-10">{item.label}</span>
-            </button>
+            </Link>
           );
         })}
 
-        <span className="h-4 w-px bg-macchiato-surface2 mx-1" />
-
-        <a
-          href={personalInfo.cvUrl}
-          download
-          className="flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold text-macchiato-base bg-macchiato-mauve cursor-pointer transition-all duration-200 hover:brightness-110 hover:-translate-y-0.5"
-          style={{
-            boxShadow:
-              "0 0 12px rgba(198,160,246,0.3), 0 2px 6px rgba(198,160,246,0.15)",
-          }}
+        <Link
+          href="/blog"
+          className={[
+            "relative cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200",
+            pathname === "/blog"
+              ? "text-macchiato-text"
+              : "text-macchiato-overlay1 hover:text-macchiato-subtext1",
+          ].join(" ")}
         >
-          <DownloadIcon size={12} />
-          Get Resume
-        </a>
+          {pathname === "/blog" && (
+            <motion.span
+              layoutId="nav-active-pill"
+              className="absolute inset-0 rounded-full"
+              style={{ background: "var(--color-nav-pill)" }}
+              transition={{ type: "spring", stiffness: 380, damping: 32 }}
+            />
+          )}
+          <span className="relative z-10">Blog</span>
+        </Link>
+
       </motion.nav>
 
       {/* ── Mobile: brand + hamburger + dropdown ── */}
@@ -105,15 +107,18 @@ export default function Navbar() {
             transition: "box-shadow 0.3s ease",
           }}
         >
-          <motion.button
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            onClick={() => scrollToSection("home")}
-            className="font-mono text-sm text-macchiato-text tracking-wider cursor-pointer"
           >
-            {personalInfo.username}.dev
-          </motion.button>
+            <Link
+              className="font-mono text-sm text-macchiato-text tracking-wider cursor-pointer"
+              href="/"
+            >
+              {personalInfo.username}.dev
+            </Link>
+          </motion.div>
 
           <motion.button
             onClick={() => setMenuOpen((v) => !v)}
@@ -155,38 +160,46 @@ export default function Navbar() {
               {navItems.map((item, i) => {
                 const isActive = activeSection === item.href.replace("#", "");
                 return (
-                  <motion.button
+                  <motion.div
                     key={item.href}
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    onClick={() => handleNavClick(item.href)}
-                    className={[
-                      "w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
-                      isActive
-                        ? "text-macchiato-mauve bg-macchiato-mauve/10"
-                        : "text-macchiato-subtext0 hover:text-macchiato-text",
-                    ].join(" ")}
                   >
-                    {item.label}
-                  </motion.button>
+                    <Link
+                      href={pathname === "/" ? item.href : `/${item.href}`}
+                      onClick={() => setMenuOpen(false)}
+                      className={[
+                        "block w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
+                        isActive
+                          ? "text-macchiato-mauve bg-macchiato-mauve/10"
+                          : "text-macchiato-subtext0 hover:text-macchiato-text",
+                      ].join(" ")}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 );
               })}
 
-              <div className="mx-3 my-1 h-px bg-macchiato-surface1" />
-
-              <motion.a
-                href={personalInfo.cvUrl}
-                download
+              <motion.div
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
-                onClick={() => setMenuOpen(false)}
-                className="w-full flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium cursor-pointer text-macchiato-mauve hover:bg-macchiato-mauve/10 transition-colors duration-150"
               >
-                <DownloadIcon size={12} />
-                Get Resume
-              </motion.a>
+                <Link
+                  href="/blog"
+                  onClick={() => setMenuOpen(false)}
+                  className={[
+                    "block w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
+                    pathname === "/blog"
+                      ? "text-macchiato-mauve bg-macchiato-mauve/10"
+                      : "text-macchiato-subtext0 hover:text-macchiato-text",
+                  ].join(" ")}
+                >
+                  Blog
+                </Link>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
