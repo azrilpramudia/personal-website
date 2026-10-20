@@ -29,6 +29,7 @@ const TECH_ICON: Record<string, { slug: string; color: string }> = {
   Drizzle: { slug: "drizzle", color: "C5F74F" },
   Go: { slug: "go", color: "00ADD8" },
   Redis: { slug: "redis", color: "FF4438" },
+  Svelte: { slug: "svelte", color: "FF3E00" },
 };
 
 // ── Tech badge with logo ────────────────────────────────────
@@ -119,14 +120,21 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         transition: { duration: 0.2 },
       }}
     >
-      {/* Top row: folder icon + featured badge */}
+      {/* Top row: folder icon + project badges */}
       <div className="flex items-start justify-between mb-5">
         <FolderIcon />
-        {project.featured && (
-          <span className="text-xs px-2 py-0.5 rounded-full font-medium font-mono bg-macchiato-yellow/10 text-macchiato-yellow border border-macchiato-yellow/20">
-            ★ featured
-          </span>
-        )}
+        <div className="flex flex-wrap justify-end gap-1.5">
+          {project.featured && (
+            <span className="text-xs px-2 py-0.5 rounded-full font-medium font-mono bg-macchiato-yellow/10 text-macchiato-yellow border border-macchiato-yellow/20">
+              ★ featured
+            </span>
+          )}
+          {project.inDevelopment && (
+            <span className="text-xs px-2 py-0.5 rounded-full font-medium font-mono bg-macchiato-blue/10 text-macchiato-blue border border-macchiato-blue/20">
+              In Development
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Title + links */}

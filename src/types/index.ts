@@ -8,6 +8,7 @@ export interface Project {
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
+  inDevelopment?: boolean;
   year?: number;
 }
 

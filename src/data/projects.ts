@@ -17,9 +17,10 @@ export const projects: Project[] = [
       "Docker",
       "MySQL",
     ],
-    liveUrl: "https://test",
+    liveUrl: "https://air-quality-monitoring-system.my.id",
     githubUrl: "https://github.com/azrilpramudia/air-quality-monitoring-system",
-    featured: true,
+    featured: false,
+    inDevelopment: true,
   },
   {
     id: "project-2",
@@ -49,23 +50,25 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/azrilpramudia/portdock-caas",
     featured: true,
   },
-  // {
-  //   id: "project-5",
-  //   title: "LibreGo - Digital Library System",
-  //   description:
-  //     "A digital library system for managing and accessing books and resources online",
-  //   techStack: [
-  //     "Go",
-  //     "Next.js",
-  //     "TypeScript",
-  //     "Tailwind CSS",
-  //     "PostgreSQL",
-  //     "Docker",
-  //   ],
-  //   liveUrl: "https://portdock-cloud.vercel.app/",
-  //   githubUrl: "https://github.com/azrilpramudia/portdock-caas",
-  //   featured: true,
-  // },
+  {
+    id: "project-4",
+    title: "LibreGo - Library Management System",
+    description:
+      "A library management system built with Go, providing features for managing books, users, and borrowing records.",
+    techStack: [
+      "Go",
+      "Redis",
+      "Docker",
+      "PostgreSQL",
+      "Svelte",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+    liveUrl: "https://librego.my.id",
+    githubUrl: "https://github.com/azrilpramudia/libre-go",
+    featured: false,
+    inDevelopment: true,
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
