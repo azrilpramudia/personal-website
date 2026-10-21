@@ -69,6 +69,17 @@ export const projects: Project[] = [
     featured: false,
     inDevelopment: true,
   },
+  {
+    id: "project-5",
+    title: "Go API Keygen",
+    description:
+      "A simple API key generator built with Go, providing a secure way to create and manage API keys.",
+    techStack: ["Go", "Redis", "Docker", "React", "TypeScript", "Tailwind CSS"],
+    liveUrl: "https://random-keygen.meowhx.my.id",
+    githubUrl: "https://github.com/azrilpramudia/go-api-keygen",
+    featured: false,
+    inDevelopment: false,
+  },
 ];
 
 export const featuredProjects = projects.filter((p) => p.featured);
