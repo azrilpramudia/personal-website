@@ -59,8 +59,8 @@ export default function Navbar() {
           );
         })}
 
-        <Link
-          href="/blog"
+        <a
+          href="https://blog.meowhx.my.id"
           className={[
             "relative cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-colors duration-200",
             pathname === "/blog"
@@ -77,7 +77,7 @@ export default function Navbar() {
             />
           )}
           <span className="relative z-10">Blog</span>
-        </Link>
+        </a>
 
       </motion.nav>
 
@@ -187,18 +187,13 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
               >
-                <Link
-                  href="/blog"
+                <a
+                  href="https://blog.meowhx.my.id"
                   onClick={() => setMenuOpen(false)}
-                  className={[
-                    "block w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150",
-                    pathname === "/blog"
-                      ? "text-macchiato-mauve bg-macchiato-mauve/10"
-                      : "text-macchiato-subtext0 hover:text-macchiato-text",
-                  ].join(" ")}
+                  className="block w-full text-left px-5 py-3 rounded-xl text-sm font-medium cursor-pointer transition-colors duration-150 text-macchiato-subtext0 hover:text-macchiato-text"
                 >
                   Blog
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
           )}

@@ -6,6 +6,9 @@ import Footer from "../components/layout/Footer";
 export const metadata: Metadata = {
   title: "meowhx",
   description: "Personal Website",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
