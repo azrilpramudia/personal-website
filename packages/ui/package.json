@@ -6,6 +6,7 @@
   "exports": {
     "./tokens.css": "./src/styles/tokens.css",
     "./site": "./src/site.ts",
+    "./content": "./src/content.ts",
     "./*.astro": "./src/components/*.astro"
   }
 }

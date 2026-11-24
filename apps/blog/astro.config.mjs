@@ -6,4 +6,7 @@ export default defineConfig({
   site: "https://blog.meowhx.my.id",
   integrations: [mdx()],
   vite: { plugins: [tailwindcss()] },
+  markdown: {
+    shikiConfig: { theme: "github-dark-default" },
+  },
 });

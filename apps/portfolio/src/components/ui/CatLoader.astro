@@ -1,0 +1,129 @@
+<div class="cat-loader" data-cat-loader hidden role="status" aria-live="polite">
+  <div class="cat-loader__content">
+    <div class="cat-loader__sprite" aria-hidden="true"></div>
+    <span class="cat-loader__progress" data-cat-progress aria-hidden="true">0%</span>
+    <p>Menyiapkan portfolio...</p>
+  </div>
+</div>
+
+<script>
+  const loader = document.querySelector<HTMLElement>("[data-cat-loader]");
+
+  if (loader) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      loader.remove();
+    } else {
+      const minimumVisibleTime = 700;
+      const maximumWaitTime = 2500;
+      const startedAt = performance.now();
+      const progress = loader.querySelector<HTMLElement>("[data-cat-progress]");
+      let isDismissing = false;
+
+      loader.hidden = false;
+
+      const updateProgress = (value: number) => {
+        if (progress) progress.textContent = `${value}%`;
+      };
+
+      const progressTimer = window.setInterval(() => {
+        const elapsed = performance.now() - startedAt;
+        updateProgress(Math.min(90, Math.floor((elapsed / maximumWaitTime) * 90)));
+      }, 50);
+
+      const dismiss = () => {
+        if (isDismissing) return;
+        isDismissing = true;
+        window.clearInterval(progressTimer);
+        updateProgress(100);
+
+        const remainingTime = Math.max(
+          0,
+          minimumVisibleTime - (performance.now() - startedAt),
+        );
+
+        window.setTimeout(() => {
+          loader.classList.add("cat-loader--hidden");
+          window.setTimeout(() => loader.remove(), 250);
+        }, remainingTime);
+      };
+
+      if (document.readyState === "complete") {
+        dismiss();
+      } else {
+        window.addEventListener("load", dismiss, { once: true });
+      }
+
+      window.setTimeout(dismiss, maximumWaitTime);
+    }
+  }
+</script>
+
+<style>
+  .cat-loader {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: var(--color-background);
+    opacity: 1;
+    transition: opacity 250ms ease;
+  }
+
+  .cat-loader[hidden] {
+    display: none;
+  }
+
+  .cat-loader--hidden {
+    opacity: 0;
+  }
+
+  .cat-loader__content {
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+  }
+
+  .cat-loader__sprite {
+    width: 160px;
+    height: 160px;
+    background-image: url("/cat-blink-sprite.png");
+    background-repeat: no-repeat;
+    background-size: 400% 100%;
+    image-rendering: pixelated;
+    animation: cat-blink 900ms steps(4, end) infinite;
+  }
+
+  .cat-loader__progress {
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+
+  .cat-loader p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  @keyframes cat-blink {
+    from {
+      background-position: 0 0;
+    }
+
+    to {
+      background-position: 100% 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cat-loader,
+    .cat-loader__sprite {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

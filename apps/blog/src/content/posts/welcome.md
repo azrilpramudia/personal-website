@@ -2,7 +2,7 @@
 title: Welcome to the blog
 description: A draft post template for future technical articles.
 pubDate: 2026-11-24
-category: Notes
+category: Networking
 tags:
   - notes
 draft: true

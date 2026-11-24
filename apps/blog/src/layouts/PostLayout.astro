@@ -1,44 +1,88 @@
 ---
-import Container from "@meowhx/ui/Container.astro";
+import type { CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import { formatDate, readingTime } from "@meowhx/ui/content";
 import BaseLayout from "./BaseLayout.astro";
-import PostMeta from "../components/PostMeta.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 
-type Heading = {
-  depth: number;
-  slug: string;
-  text: string;
-};
+interface Props {
+  post: CollectionEntry<"posts">;
+  headings: MarkdownHeading[];
+  prev?: CollectionEntry<"posts">;
+  next?: CollectionEntry<"posts">;
+}
 
-type Props = {
-  title: string;
-  description: string;
-  pubDate: Date;
-  updatedDate?: Date;
-  tags: string[];
-  headings: Heading[];
-};
+const { post, headings, prev, next } = Astro.props;
+const { title, description, pubDate, updatedDate, author, category, tags } = post.data;
+const minutes = readingTime(post.body ?? "");
 
-const { title, description, pubDate, updatedDate, tags, headings } = Astro.props;
+const focus =
+  "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 ---
 
-<BaseLayout title={`${title} | Meowhx Blog`} description={description}>
-  <Container as="main" class="page">
-    <a href="/">← All posts</a>
+<BaseLayout title={title} description={description} type="article" publishedTime={pubDate}>
+  <article class="mx-auto w-full max-w-[720px] px-6 py-16 md:py-24">
     <header>
-      <h1>{title}</h1>
-      <PostMeta pubDate={pubDate} updatedDate={updatedDate} />
-      {tags.length > 0 && (
-        <nav class="post-tags" aria-label="Post tags">
-          {tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
-        </nav>
-      )}
+      <a href="/" class={`font-mono text-xs text-text-muted hover:text-text-primary ${focus}`}>← All articles</a>
+
+      <h1 class="mt-6 text-[clamp(2rem,5vw,3rem)] font-semibold leading-[1.1] tracking-[-0.035em]">
+        {title}
+      </h1>
+      <p class="mt-4 text-lg leading-relaxed text-text-secondary">{description}</p>
+
+      <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-text-muted">
+        <span>{author}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        {
+          updatedDate && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></span>
+            </>
+          )
+        }
+        <span aria-hidden="true">·</span>
+        <span>{minutes} min read</span>
+        <span aria-hidden="true">·</span>
+        <span>{category}</span>
+      </p>
+
+      {
+        tags.length > 0 && (
+          <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+            {tags.map((tag) => (
+              <li>
+                <a href={`/tags/${tag}/`} class={`font-mono text-xs text-accent hover:underline ${focus}`}>#{tag}</a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
     </header>
-    <div class="post-layout">
-      <article class="post-body">
-        <slot />
-      </article>
+
+    <div class="mt-10 border-t border-border pt-10">
       <TableOfContents headings={headings} />
+      <div class="prose max-w-none"><slot /></div>
     </div>
-  </Container>
+
+    {
+      (prev || next) && (
+        <nav aria-label="More articles" class="mt-16 grid gap-4 border-t border-border pt-8 sm:grid-cols-2">
+          {prev ? (
+            <a href={`/posts/${prev.id}/`} class={`block rounded-lg border border-border p-4 transition-colors duration-200 hover:bg-surface ${focus}`}>
+              <span class="font-mono text-xs text-text-muted">Previous</span>
+              <span class="mt-1 block text-sm">{prev.data.title}</span>
+            </a>
+          ) : <span />}
+          {next && (
+            <a href={`/posts/${next.id}/`} class={`block rounded-lg border border-border p-4 transition-colors duration-200 hover:bg-surface sm:text-right ${focus}`}>
+              <span class="font-mono text-xs text-text-muted">Next</span>
+              <span class="mt-1 block text-sm">{next.data.title}</span>
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </article>
 </BaseLayout>

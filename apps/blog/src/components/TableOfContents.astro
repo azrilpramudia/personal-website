@@ -1,27 +1,28 @@
 ---
-type Heading = {
-  depth: number;
-  slug: string;
-  text: string;
-};
+import type { MarkdownHeading } from "astro";
 
-type Props = {
-  headings: Heading[];
-};
-
-const { headings } = Astro.props;
-const items = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+interface Props {
+  headings: MarkdownHeading[];
+}
+const items = Astro.props.headings.filter((h) => h.depth >= 2 && h.depth <= 3);
 ---
 
-{items.length > 0 && (
-  <nav class="toc" aria-label="Table of contents">
-    <strong>On this page</strong>
-    <ul>
-      {items.map((heading) => (
-        <li style={`margin-inline-start: ${(heading.depth - 2) * 1}rem`}>
-          <a href={`#${heading.slug}`}>{heading.text}</a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-)}
+{
+  items.length >= 3 && (
+    <nav aria-label="Table of contents" class="mb-10 rounded-lg border border-border p-5">
+      <p class="text-sm font-medium">On this page</p>
+      <ul class="mt-3 space-y-2">
+        {items.map((h) => (
+          <li class:list={[h.depth === 3 && "pl-4"]}>
+            <a
+              href={`#${h.slug}`}
+              class="rounded-sm text-sm text-text-secondary transition-colors duration-150 hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
