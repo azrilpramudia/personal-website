@@ -1,0 +1,70 @@
+---
+type Props = {
+  href?: string;
+  target?: string;
+  rel?: string;
+  variant?: "primary" | "secondary";
+  type?: "button" | "submit" | "reset";
+  class?: string;
+};
+
+const {
+  href,
+  target,
+  rel,
+  variant = "primary",
+  type = "button",
+  class: className,
+} = Astro.props;
+---
+
+{href ? (
+  <a
+    href={href}
+    target={target}
+    rel={rel}
+    class:list={["button", `button--${variant}`, className]}
+  >
+    <slot />
+  </a>
+) : (
+  <button type={type} class:list={["button", `button--${variant}`, className]}>
+    <slot />
+  </button>
+)}
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+
+  .button--primary {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .button--primary:hover {
+    background: color-mix(in srgb, var(--color-accent), white 12%);
+  }
+
+  .button--secondary {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  .button--secondary:hover {
+    background: var(--color-surface-secondary);
+  }
+</style>

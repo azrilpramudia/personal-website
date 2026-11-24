@@ -1,46 +1,27 @@
-# Astro Starter Kit: Basics
+# Meowhx
+
+Astro monorepo for the portfolio and technical blog:
+
+- `apps/portfolio` → `https://meowhx.my.id`
+- `apps/blog` → `https://blog.meowhx.my.id`
+- `packages/ui` → shared design tokens, UI components, and site links
+
+## Requirements
+
+- Node.js `22.23.4` or newer
+- pnpm
+
+## Getting started
 
 ```sh
-npm create astro@latest -- --template basics
+pnpm install
+pnpm dev:portfolio
+pnpm dev:blog
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Run both production builds with `pnpm build`, or build one app with
+`pnpm build:portfolio` or `pnpm build:blog`.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Blog posts are Markdown or MDX files in `apps/blog/src/content/posts`. Each post
+requires `title`, `description`, and `pubDate` frontmatter. Optional fields are
+`updatedDate`, `tags`, and `draft`.

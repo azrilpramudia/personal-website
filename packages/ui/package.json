@@ -1,0 +1,13 @@
+{
+  "name": "@meowhx/ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./components/Button.astro": "./src/components/Button.astro",
+    "./components/Container.astro": "./src/components/Container.astro",
+    "./components/SiteFooter.astro": "./src/components/SiteFooter.astro",
+    "./site": "./src/site.ts",
+    "./styles/tokens.css": "./src/styles/tokens.css"
+  }
+}

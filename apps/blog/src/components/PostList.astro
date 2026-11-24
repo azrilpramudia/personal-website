@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostMeta from "./PostMeta.astro";
+
+type Props = {
+  posts: CollectionEntry<"posts">[];
+};
+
+const { posts } = Astro.props;
+---
+
+{posts.length ? (
+  <div class="post-list">
+    {posts.map((post) => (
+      <article class="post-card">
+        <PostMeta pubDate={post.data.pubDate} updatedDate={post.data.updatedDate} />
+        <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+        <p>{post.data.description}</p>
+        {post.data.tags.length > 0 && (
+          <nav class="post-tags" aria-label={`Tags for ${post.data.title}`}>
+            {post.data.tags.map((tag) => (
+              <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>
+            ))}
+          </nav>
+        )}
+      </article>
+    ))}
+  </div>
+) : (
+  <p>No posts published yet. Please check back soon.</p>
+)}

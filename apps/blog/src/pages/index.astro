@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Button from "@meowhx/ui/components/Button.astro";
+import Container from "@meowhx/ui/components/Container.astro";
+import { sites } from "@meowhx/ui/site";
+import PostList from "../components/PostList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="Meowhx Blog" description="Technical notes and articles from Meowhx.">
+  <Container as="main" class="page">
+    <p class="eyebrow">Writing and notes</p>
+    <h1>Meowhx Blog</h1>
+    <p>Technical articles, project notes, and lessons learned.</p>
+    <Button href={sites.portfolio.url} variant="secondary">Visit the portfolio</Button>
+    <PostList posts={posts} />
+  </Container>
+</BaseLayout>

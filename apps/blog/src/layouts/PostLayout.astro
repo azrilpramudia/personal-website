@@ -1,0 +1,44 @@
+---
+import Container from "@meowhx/ui/components/Container.astro";
+import BaseLayout from "./BaseLayout.astro";
+import PostMeta from "../components/PostMeta.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+type Props = {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  tags: string[];
+  headings: Heading[];
+};
+
+const { title, description, pubDate, updatedDate, tags, headings } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Meowhx Blog`} description={description}>
+  <Container as="main" class="page">
+    <a href="/">← All posts</a>
+    <header>
+      <h1>{title}</h1>
+      <PostMeta pubDate={pubDate} updatedDate={updatedDate} />
+      {tags.length > 0 && (
+        <nav class="post-tags" aria-label="Post tags">
+          {tags.map((tag) => <a href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+        </nav>
+      )}
+    </header>
+    <div class="post-layout">
+      <article class="post-body">
+        <slot />
+      </article>
+      <TableOfContents headings={headings} />
+    </div>
+  </Container>
+</BaseLayout>

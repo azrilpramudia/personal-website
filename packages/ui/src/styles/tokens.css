@@ -1,0 +1,37 @@
+:root {
+  color-scheme: dark;
+  --meowhx-background: #000000;
+  --meowhx-surface: #111111;
+  --meowhx-surface-secondary: #171717;
+  --meowhx-border: #333333;
+  --meowhx-text-primary: #ededed;
+  --meowhx-text-secondary: #a1a1a1;
+  --meowhx-text-muted: #666666;
+  --meowhx-accent: #0070f3;
+  --meowhx-success: #16a34a;
+  --meowhx-warning: #f5a623;
+  --meowhx-error: #ee0000;
+  --font-sans: "Inter Variable", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-background: var(--meowhx-background);
+  --color-surface: var(--meowhx-surface);
+  --color-surface-secondary: var(--meowhx-surface-secondary);
+  --color-border: var(--meowhx-border);
+  --color-text-primary: var(--meowhx-text-primary);
+  --color-text-secondary: var(--meowhx-text-secondary);
+  --color-text-muted: var(--meowhx-text-muted);
+  --color-accent: var(--meowhx-accent);
+}
+
+@theme {
+  --color-background: var(--meowhx-background);
+  --color-surface: var(--meowhx-surface);
+  --color-surface-secondary: var(--meowhx-surface-secondary);
+  --color-border: var(--meowhx-border);
+  --color-text-primary: var(--meowhx-text-primary);
+  --color-text-secondary: var(--meowhx-text-secondary);
+  --color-text-muted: var(--meowhx-text-muted);
+  --color-accent: var(--meowhx-accent);
+  --font-sans: "Inter Variable", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}

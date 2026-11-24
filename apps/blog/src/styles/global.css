@@ -1,0 +1,145 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource/jetbrains-mono";
+@import "@meowhx/ui/styles/tokens.css";
+@import "tailwindcss";
+
+html {
+  min-width: 320px;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.page {
+  padding-block: 4rem 6rem;
+}
+
+.eyebrow,
+.post-meta {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.post-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.post-card {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+}
+
+.post-card h2 {
+  margin-block: 0.5rem;
+}
+
+.post-card h2 a {
+  text-decoration: none;
+}
+
+.post-card p,
+.post-body {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.post-tags a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.post-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 16rem);
+  gap: 4rem;
+}
+
+.post-body h2,
+.post-body h3 {
+  margin-top: 2.5rem;
+  color: var(--color-text-primary);
+}
+
+.post-body a {
+  color: var(--color-accent);
+}
+
+.toc {
+  position: sticky;
+  top: 2rem;
+  align-self: start;
+  padding-left: 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.toc ul {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.toc a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+}
+
+.site-header__brand {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .post-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .toc {
+    position: static;
+    grid-row: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
