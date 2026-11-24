@@ -40,7 +40,7 @@ const items = (await getCollection("experience", ({ data }) => data.published ||
             )}
 
             {!e.published && (
-              <p class="mt-4 text-xs text-warning">Draft: tidak tampil di production</p>
+              <p class="mt-4 text-xs text-warning">Draft: not shown in production</p>
             )}
           </li>
         ))}

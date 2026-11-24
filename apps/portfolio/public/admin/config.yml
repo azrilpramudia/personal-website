@@ -9,7 +9,7 @@ public_folder: /uploads
 collections:
   - name: posts
     label: Blog
-    label_singular: Artikel
+    label_singular: Article
     folder: apps/blog/src/content/posts
     extension: md
     format: frontmatter
@@ -18,16 +18,16 @@ collections:
     media_folder: /apps/blog/public/uploads
     public_folder: /uploads
     fields:
-      - { name: title, label: Judul, widget: string }
+      - { name: title, label: Title, widget: string }
       - {
           name: description,
-          label: Deskripsi singkat,
+          label: Short description,
           widget: text,
           pattern: ["^.{1,200}$", "Maksimal 200 karakter"],
         }
       - {
           name: pubDate,
-          label: Tanggal terbit,
+          label: Publish date,
           widget: datetime,
           date_format: "YYYY-MM-DD",
           time_format: false,
@@ -35,7 +35,7 @@ collections:
         }
       - {
           name: updatedDate,
-          label: Tanggal update,
+          label: Updated date,
           widget: datetime,
           date_format: "YYYY-MM-DD",
           time_format: false,
@@ -43,7 +43,7 @@ collections:
           required: false,
         }
       - name: category
-        label: Kategori
+        label: Category
         widget: select
         options:
           [
@@ -55,16 +55,16 @@ collections:
           ]
       - {
           name: tags,
-          label: "Tag (huruf kecil, pakai tanda hubung)",
+          label: "Tags (lowercase, use hyphens)",
           widget: list,
           required: false,
         }
       - { name: draft, label: Draft, widget: boolean, default: true }
-      - { name: body, label: Isi artikel, widget: markdown }
+      - { name: body, label: Article body, widget: markdown }
 
   - name: experience
     label: Experience
-    label_singular: Entri pengalaman
+    label_singular: Experience entry
     folder: apps/portfolio/src/content/experience
     extension: json
     format: json
@@ -74,33 +74,33 @@ collections:
     fields:
       - {
           name: published,
-          label: Tampilkan di situs,
+          label: Show on site,
           widget: boolean,
           default: false,
         }
-      - { name: organization, label: Organisasi / Institusi, widget: string }
-      - { name: role, label: Peran, widget: string }
+      - { name: organization, label: Organization / Institution, widget: string }
+      - { name: role, label: Role, widget: string }
       - name: type
         label: Jenis
         widget: select
         options: [Employment, Internship, Education, Training, Organization]
       - {
           name: start,
-          label: "Mulai (YYYY-MM)",
+          label: "Start (YYYY-MM)",
           widget: string,
           pattern: ['^\d{4}-\d{2}$', "Format YYYY-MM, mis. 2024-08"],
         }
       - {
           name: end,
-          label: "Selesai (YYYY-MM atau Present)",
+          label: "End (YYYY-MM or Present)",
           widget: string,
           default: Present,
-          pattern: ['^(\d{4}-\d{2}|Present)$', "Format YYYY-MM atau Present"],
+          pattern: ['^(\d{4}-\d{2}|Present)$', "Format must be YYYY-MM or Present"],
         }
-      - { name: location, label: Lokasi, widget: string, required: false }
+      - { name: location, label: Location, widget: string, required: false }
       - {
           name: highlights,
-          label: "Poin kontribusi (2-4, konkret)",
+          label: "Highlights (2-4, specific)",
           widget: list,
           min: 1,
         }
@@ -108,34 +108,32 @@ collections:
 
   - name: projects
     label: Projects
-    label_singular: Proyek
+    label_singular: Project
     folder: apps/portfolio/src/content/projects
     extension: json
     format: json
     create: true
     slug: "{{name}}"
     summary: "{{name}} · {{status}}"
-    media_folder: /apps/portfolio/public/uploads/projects
-    public_folder: /uploads/projects
     fields:
       - {
           name: published,
-          label: Tampilkan di situs,
+          label: Show on site,
           widget: boolean,
           default: false,
         }
       - {
           name: order,
-          label: "Urutan (kecil = lebih dulu)",
+          label: "Order (lower numbers appear first)",
           widget: number,
           value_type: int,
           default: 100,
         }
-      - { name: name, label: Nama proyek, widget: string }
-      - { name: summary, label: Ringkasan masalah dan hasil, widget: text }
-      - { name: role, label: Peran / kontribusi kamu, widget: string }
+      - { name: name, label: Project name, widget: string }
+      - { name: summary, label: "Summary: problem and outcome", widget: text }
+      - { name: role, label: "Your role / contribution", widget: string }
       - name: category
-        label: Kategori
+        label: Category
         widget: select
         options:
           [
@@ -152,7 +150,7 @@ collections:
         options: [Completed, In Progress, Archived]
       - {
           name: tech,
-          label: "Teknologi (hanya yang benar-benar dipakai)",
+          label: "Technologies (only those actually used)",
           widget: list,
           min: 1,
         }
@@ -161,19 +159,12 @@ collections:
           label: URL repositori,
           widget: string,
           required: false,
-          pattern: ["^https?://", "Harus diawali http:// atau https://"],
+          pattern: ["^https?://", "Must start with http:// or https://"],
         }
       - {
           name: demoUrl,
           label: URL demo,
           widget: string,
           required: false,
-          pattern: ["^https?://", "Harus diawali http:// atau https://"],
-        }
-      - { name: image, label: Screenshot, widget: image, required: false }
-      - {
-          name: imageAlt,
-          label: Teks alternatif gambar,
-          widget: string,
-          required: false,
+          pattern: ["^https?://", "Must start with http:// or https://"],
         }

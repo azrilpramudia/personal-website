@@ -48,8 +48,6 @@ const projects = defineCollection({
     tech: z.array(z.string()).min(1),
     repoUrl: optionalUrl,
     demoUrl: optionalUrl,
-    image: z.string().optional(),
-    imageAlt: z.string().optional(),
   }),
 });
 

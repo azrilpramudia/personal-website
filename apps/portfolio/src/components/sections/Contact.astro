@@ -4,7 +4,7 @@ import Container from "@meowhx/ui/Container.astro";
 
 const unfilled = [site.email, site.social.github, site.social.linkedin].some((v) => v.includes("ISI_"));
 if (import.meta.env.PROD && unfilled) {
-  throw new Error("Isi email dan link sosial di packages/ui/src/site.ts sebelum build production.");
+  throw new Error("Add your email and social links to packages/ui/src/site.ts before building for production.");
 }
 
 const link =
