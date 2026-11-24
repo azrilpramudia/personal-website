@@ -2,9 +2,8 @@
 import Section from "../ui/Section.astro";
 
 const facts = [
-  { label: "Education", value: "Informatics Engineering (in progress)" },
-  { label: "Primary focus", value: "Network Engineering" },
-  { label: "Developing interests", value: "System Administration, DevOps" },
+  { label: "Current role", value: "Network Engineer" },
+  { label: "Education", value: "Informatics Engineering graduate" },
   { label: "Supporting skills", value: "Go, TypeScript, databases" },
 ];
 ---
@@ -12,32 +11,48 @@ const facts = [
 <Section id="about" title="About">
   <div class="max-w-[65ch]">
     <div class="space-y-5 leading-7 text-text-secondary">
-
-      <div class="max-w-[65ch]">
-        <div class="space-y-5 leading-7 text-text-secondary">
-          <p>
-            I'm an Informatics Engineering student with a primary focus on Network
-            Engineering. I'm interested in how networks are designed, configured, and
-            troubleshot, and in the infrastructure that keeps services reliable.
-          </p>
-          <p>
-            Alongside networking, I'm building hands-on experience with Linux, System
-            Administration, and DevOps tooling. I also write code, mainly Go and
-            TypeScript, to automate tasks and build supporting tools.
-          </p>
-        </div>
-
-        <dl class="mt-10 divide-y divide-border border-y border-border">
-          {
-            facts.map((fact) => (
-              <div class="grid gap-1 py-4 sm:grid-cols-[180px_1fr]">
-                <dt class="text-sm text-text-muted">{fact.label}</dt>
-                <dd class="text-sm text-text-primary">{fact.value}</dd>
-              </div>
-            ))
-          }
-        </dl>
-      </div>
+      <p>
+        I'm an Informatics Engineering graduate with a primary focus on Network
+        Engineering. I'm interested in how networks are designed, configured, and
+        troubleshot, and in the infrastructure that keeps services reliable.
+      </p>
+      <p>
+        Alongside networking, I'm building hands-on experience with Linux, System
+        Administration, and DevOps tooling. I also write code, mainly Go and
+        TypeScript, to automate tasks and build supporting tools.
+      </p>
     </div>
+
+    <div class="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 xl:grid-cols-3">
+      <article class="border-t border-border pt-4">
+        <h3 class="font-medium text-text-primary">Network Engineering</h3>
+        <p class="mt-2 text-sm leading-6 text-text-secondary">
+          Interested in how networks are designed, configured, and troubleshot.
+        </p>
+      </article>
+      <article class="border-t border-border pt-4">
+        <h3 class="font-medium text-text-primary">Linux &amp; System Administration</h3>
+        <p class="mt-2 text-sm leading-6 text-text-secondary">
+          Building hands-on experience with Linux systems and service administration.
+        </p>
+      </article>
+      <article class="border-t border-border pt-4">
+        <h3 class="font-medium text-text-primary">DevOps &amp; Automation</h3>
+        <p class="mt-2 text-sm leading-6 text-text-secondary">
+          Exploring DevOps tooling and writing Go and TypeScript utilities to automate tasks.
+        </p>
+      </article>
+    </div>
+
+    <dl class="mt-8 grid gap-5 border-y border-border py-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        facts.map((fact) => (
+          <div class="space-y-1">
+            <dt class="text-sm text-text-muted">{fact.label}</dt>
+            <dd class="text-sm text-text-primary">{fact.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
   </div>
 </Section>
