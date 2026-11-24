@@ -1,70 +1,25 @@
 ---
-type Props = {
-  href?: string;
-  target?: string;
-  rel?: string;
+interface Props {
+  href: string;
   variant?: "primary" | "secondary";
-  type?: "button" | "submit" | "reset";
+  external?: boolean;
   class?: string;
-};
+}
+const { href, variant = "primary", external = false, class: className = "" } = Astro.props;
 
-const {
-  href,
-  target,
-  rel,
-  variant = "primary",
-  type = "button",
-  class: className,
-} = Astro.props;
+const base =
+  "inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+
+const variants = {
+  primary: "bg-accent text-white hover:bg-accent/90",
+  secondary: "border border-border text-text-primary hover:bg-surface-secondary",
+};
 ---
 
-{href ? (
-  <a
-    href={href}
-    target={target}
-    rel={rel}
-    class:list={["button", `button--${variant}`, className]}
-  >
-    <slot />
-  </a>
-) : (
-  <button type={type} class:list={["button", `button--${variant}`, className]}>
-    <slot />
-  </button>
-)}
-
-<style>
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.75rem;
-    padding: 0.65rem 1rem;
-    border: 1px solid transparent;
-    border-radius: 0.5rem;
-    font: inherit;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 150ms ease, border-color 150ms ease;
-  }
-
-  .button--primary {
-    background: var(--color-accent);
-    color: white;
-  }
-
-  .button--primary:hover {
-    background: color-mix(in srgb, var(--color-accent), white 12%);
-  }
-
-  .button--secondary {
-    background: var(--color-surface);
-    border-color: var(--color-border);
-    color: var(--color-text-primary);
-  }
-
-  .button--secondary:hover {
-    background: var(--color-surface-secondary);
-  }
-</style>
+<a
+  href={href}
+  class:list={[base, variants[variant], className]}
+  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+>
+  <slot />
+</a>

@@ -1,70 +1,14 @@
 ---
-import Button from "@meowhx/ui/components/Button.astro";
-import Container from "@meowhx/ui/components/Container.astro";
-import { sites } from "@meowhx/ui/site";
-import Layout from "../layouts/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Hero from "../components/sections/Hero.astro";
+import About from "../components/sections/About.astro";
 ---
 
-<Layout>
-  <main>
-    <Container class="home">
-      <p class="home__label">Personal portfolio</p>
-      <h1>Meowhx</h1>
-      <p class="home__intro">
-        A home for selected projects, experience, and technical interests.
-      </p>
-      <nav aria-label="Explore">
-        <Button href="#portfolio" variant="secondary">Explore portfolio</Button>
-        <Button href={sites.blog.url} target="_blank" rel="noreferrer">
-          Visit the blog
-        </Button>
-      </nav>
-      <section id="portfolio" aria-labelledby="portfolio-title">
-        <h2 id="portfolio-title">Portfolio</h2>
-        <p>Project and experience details will be added here.</p>
-      </section>
-    </Container>
+<BaseLayout>
+  <Navbar />
+  <main id="main">
+    <Hero />
+    <About />
   </main>
-</Layout>
-
-<style>
-  .home {
-    padding-block: clamp(5rem, 14vh, 10rem);
-  }
-
-  .home__label {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-  }
-
-  h1 {
-    margin-block: 0.5rem;
-    font-size: clamp(3rem, 9vw, 5rem);
-    letter-spacing: -0.06em;
-  }
-
-  .home__intro {
-    max-width: 38rem;
-    color: var(--color-text-secondary);
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
-    line-height: 1.6;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-
-  section {
-    margin-top: clamp(5rem, 12vh, 8rem);
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  section p {
-    color: var(--color-text-secondary);
-  }
-</style>
+</BaseLayout>

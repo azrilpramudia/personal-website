@@ -1,68 +1,52 @@
 ---
 import "../styles/global.css";
-import SiteFooter from "@meowhx/ui/components/SiteFooter.astro";
+import "@fontsource-variable/inter";
+import "@fontsource/jetbrains-mono/400.css";
+import { site } from "@meowhx/ui/site";
 
-type Props = {
+interface Props {
   title?: string;
   description?: string;
-};
+  image?: string;
+}
 
 const {
-  title = "Meowhx | Portfolio",
-  description = "Portfolio, projects, and technical interests from Meowhx.",
+  title = `${site.name} | Network Engineering Portfolio`,
+  description = "Informatics Engineering student focused on Network Engineering, with growing interests in Linux systems, System Administration, and DevOps.",
+  image = "/og-image.png",
 } = Astro.props;
-const canonicalUrl = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).toString()
-  : undefined;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+    >
+      Skip to content
+    </a>
     <slot />
-    <SiteFooter currentSite="portfolio" />
   </body>
 </html>
-
-<style is:global>
-  html {
-    min-width: 320px;
-    background: var(--color-background);
-    color: var(--color-text-primary);
-    font-family: var(--font-sans);
-    scroll-behavior: smooth;
-  }
-
-  body {
-    min-height: 100vh;
-    margin: 0;
-  }
-
-  a {
-    color: inherit;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-      transition-duration: 0.01ms !important;
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-    }
-  }
-</style>

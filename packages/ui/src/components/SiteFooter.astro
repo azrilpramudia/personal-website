@@ -1,21 +1,28 @@
 ---
 import Container from "./Container.astro";
-import { sites, socialLinks } from "../site";
+import { site } from "../site";
 
 type Props = {
-  currentSite: keyof typeof sites;
+  currentSite: "portfolio" | "blog";
 };
 
 const { currentSite } = Astro.props;
-const otherSites =
-  currentSite === "portfolio" ? [sites.blog] : [sites.portfolio];
+const otherSite =
+  currentSite === "portfolio"
+    ? { label: "Blog", url: site.blogUrl }
+    : { label: "Portfolio", url: site.portfolioUrl };
+const socialLinks = [
+  { label: "GitHub", url: site.social.github },
+  { label: "LinkedIn", url: site.social.linkedin },
+  { label: "Email", url: `mailto:${site.email}` },
+];
 ---
 
 <footer class="site-footer">
   <Container class="site-footer__inner">
     <p>&copy; {new Date().getFullYear()} Meowhx</p>
     <nav aria-label="Related sites">
-      {otherSites.map((site) => <a href={site.url}>{site.label}</a>)}
+      <a href={otherSite.url}>{otherSite.label}</a>
       {socialLinks.map((link) => (
         <a href={link.url} target="_blank" rel="noreferrer">{link.label}</a>
       ))}

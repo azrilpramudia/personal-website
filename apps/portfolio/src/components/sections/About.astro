@@ -1,0 +1,42 @@
+---
+const facts = [
+  { label: "Education", value: "Informatics Engineering (in progress)" },
+  { label: "Primary focus", value: "Network Engineering" },
+  { label: "Developing interests", value: "System Administration, DevOps" },
+  { label: "Supporting skills", value: "Go, TypeScript, databases" },
+];
+---
+
+<section id="about" class="scroll-mt-20 border-t border-border py-24">
+  <div class="mx-auto w-full max-w-6xl px-6">
+    <div class="grid gap-10 md:grid-cols-[200px_1fr] md:gap-16">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-4xl">About</h2>
+
+      <div class="max-w-[65ch]">
+        <div class="space-y-5 leading-7 text-text-secondary">
+          <p>
+            I'm an Informatics Engineering student with a primary focus on Network
+            Engineering. I'm interested in how networks are designed, configured, and
+            troubleshot, and in the infrastructure that keeps services reliable.
+          </p>
+          <p>
+            Alongside networking, I'm building hands-on experience with Linux, System
+            Administration, and DevOps tooling. I also write code, mainly Go and
+            TypeScript, to automate tasks and build supporting tools.
+          </p>
+        </div>
+
+        <dl class="mt-10 divide-y divide-border border-y border-border">
+          {
+            facts.map((fact) => (
+              <div class="grid gap-1 py-4 sm:grid-cols-[180px_1fr]">
+                <dt class="text-sm text-text-muted">{fact.label}</dt>
+                <dd class="text-sm text-text-primary">{fact.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

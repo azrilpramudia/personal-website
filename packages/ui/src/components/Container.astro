@@ -1,19 +1,11 @@
 ---
-type Props = {
-  as?: "div" | "main" | "section";
+interface Props {
   class?: string;
-};
-
-const { as: Tag = "div", class: className } = Astro.props;
+  as?: keyof HTMLElementTagNameMap;
+}
+const { class: className = "", as: Tag = "div" } = Astro.props;
 ---
 
-<Tag class:list={["container", className]}>
+<Tag class:list={["mx-auto w-full max-w-[1120px] px-6", className]}>
   <slot />
 </Tag>
-
-<style>
-  .container {
-    width: min(100% - 2rem, 72rem);
-    margin-inline: auto;
-  }
-</style>

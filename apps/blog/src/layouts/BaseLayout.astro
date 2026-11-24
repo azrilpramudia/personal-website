@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
-import Container from "@meowhx/ui/components/Container.astro";
-import SiteFooter from "@meowhx/ui/components/SiteFooter.astro";
+import Container from "@meowhx/ui/Container.astro";
+import SiteFooter from "@meowhx/ui/SiteFooter.astro";
+import { site } from "@meowhx/ui/site";
 
 type Props = {
   title: string;
@@ -28,7 +29,7 @@ const canonicalUrl = Astro.site
     <header class="site-header">
       <Container class="site-header__inner">
         <a class="site-header__brand" href="/">Meowhx / Notes</a>
-        <a href="https://meowhx.my.id">Portfolio</a>
+        <a href={site.portfolioUrl}>Portfolio</a>
       </Container>
     </header>
     <slot />

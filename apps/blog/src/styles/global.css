@@ -1,6 +1,6 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource/jetbrains-mono";
-@import "@meowhx/ui/styles/tokens.css";
+@import "@meowhx/ui/tokens.css";
 @import "tailwindcss";
 
 html {

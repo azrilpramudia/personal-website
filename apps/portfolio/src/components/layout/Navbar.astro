@@ -1,0 +1,130 @@
+---
+import Container from "@meowhx/ui/Container.astro";
+import { navItems } from "../../data/nav";
+
+const desktopLink =
+  "rounded-sm text-sm text-text-secondary transition-colors duration-150 hover:text-text-primary aria-[current=true]:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+const mobileLink =
+  "block rounded-sm py-3 text-base text-text-secondary transition-colors duration-150 hover:text-text-primary aria-[current=true]:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+---
+
+<header class="sticky top-0 z-40 border-b border-border bg-background">
+  <Container class="flex h-16 items-center justify-between">
+    <a
+      href="/"
+      class="rounded-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+    >
+      meowhx
+    </a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-8">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                data-nav-link={item.href.startsWith("/#") ? "" : undefined}
+                class={desktopLink}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="-mr-2 inline-flex size-11 items-center justify-center rounded-md text-text-primary hover:bg-surface-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="4" x2="20" y1="7" y2="7" /><line x1="4" x2="20" y1="12" y2="12" /><line x1="4" x2="20" y1="17" y2="17" />
+      </svg>
+      <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+      </svg>
+    </button>
+  </Container>
+
+  <nav id="mobile-menu" aria-label="Mobile" class="border-t border-border md:hidden" hidden>
+    <Container>
+      <ul class="py-2">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                data-nav-link={item.href.startsWith("/#") ? "" : undefined}
+                class={mobileLink}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Container>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("#menu-toggle");
+  const menu = document.querySelector<HTMLElement>("#mobile-menu");
+  const iconOpen = document.querySelector("#icon-open");
+  const iconClose = document.querySelector("#icon-close");
+
+  function setOpen(open: boolean) {
+    if (!toggle || !menu) return;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.hidden = !open;
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+  }
+
+  toggle?.addEventListener("click", () => {
+    setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  menu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  window.matchMedia("(min-width: 768px)").addEventListener("change", (e) => {
+    if (e.matches) setOpen(false);
+  });
+
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]");
+  const ids = ["home", "about", "experience", "skills", "projects", "contact"];
+  const sections = ids
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => el !== null);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        links.forEach((link) => {
+          if (link.getAttribute("href") === `/#${entry.target.id}`) {
+            link.setAttribute("aria-current", "true");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      }
+    },
+    { rootMargin: "-40% 0px -55% 0px" },
+  );
+  sections.forEach((s) => observer.observe(s));
+</script>

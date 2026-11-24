@@ -1,1 +1,1 @@
-export { sites, socialLinks } from "@meowhx/ui/site";
+export { site } from "@meowhx/ui/site";

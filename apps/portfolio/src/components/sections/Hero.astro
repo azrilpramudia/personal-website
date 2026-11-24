@@ -1,0 +1,38 @@
+---
+import Container from "@meowhx/ui/Container.astro";
+import Button from "@meowhx/ui/Button.astro";
+import { site } from "@meowhx/ui/site";
+
+const socialLink =
+  "rounded-sm text-sm text-text-secondary underline-offset-4 transition-colors duration-150 hover:text-text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+---
+
+<section id="home" class="scroll-mt-20 py-24 md:py-36">
+  <Container>
+    <div class="max-w-3xl">
+      <p class="font-mono text-sm text-text-muted">Informatics Engineering student</p>
+
+      <h1
+        class="mt-4 text-[clamp(2.75rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.045em]"
+      >
+        Exploring Networks. Building Reliable Infrastructure.
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-text-secondary">
+        I'm Azril, an Informatics Engineering student focused on Network Engineering,
+        with growing interests in Linux systems, System Administration, and DevOps.
+      </p>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <Button href="#projects">View Projects</Button>
+        <Button href="#contact" variant="secondary">Contact Me</Button>
+      </div>
+
+      <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-2">
+        <li><a class={socialLink} href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a class={socialLink} href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a class={socialLink} href={`mailto:${site.email}`}>Email</a></li>
+      </ul>
+    </div>
+  </Container>
+</section>
