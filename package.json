@@ -1,16 +1,9 @@
 {
   "name": "meowhx",
   "private": true,
-  "packageManager": "pnpm@12.23.0",
-  "type": "module",
-  "engines": {
-    "node": ">=22.23.4"
-  },
   "scripts": {
     "dev:portfolio": "pnpm --filter @meowhx/portfolio dev",
     "dev:blog": "pnpm --filter @meowhx/blog dev",
-    "build": "pnpm --filter @meowhx/portfolio --filter @meowhx/blog build",
-    "build:portfolio": "pnpm --filter @meowhx/portfolio build",
-    "build:blog": "pnpm --filter @meowhx/blog build"
+    "build": "pnpm -r build"
   }
 }

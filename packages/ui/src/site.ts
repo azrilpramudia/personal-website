@@ -1,17 +1,10 @@
-export const sites = {
-  portfolio: {
-    label: "Portfolio",
-    url: "https://meowhx.my.id",
+export const site = {
+  name: "Meowhx",
+  portfolioUrl: "https://meowhx.my.id",
+  blogUrl: "https://blog.meowhx.my.id",
+  social: {
+    github: "https://github.com/ISI_USERNAME",
+    linkedin: "https://linkedin.com/in/ISI_USERNAME",
   },
-  blog: {
-    label: "Blog",
-    url: "https://blog.meowhx.my.id",
-  },
+  email: "ISI_EMAIL",
 } as const;
-
-export const socialLinks = [
-  {
-    label: "GitHub",
-    url: "https://github.com/azrilpramudia",
-  },
-] as const;

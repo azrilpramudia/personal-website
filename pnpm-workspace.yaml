@@ -1,5 +1,3 @@
 packages:
   - "apps/*"
   - "packages/*"
-minimumReleaseAgeExclude:
-  - lucide-static@1.78.0

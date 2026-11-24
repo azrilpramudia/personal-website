@@ -1,13 +1,15 @@
-@import "@fontsource-variable/inter";
-@import "@fontsource/jetbrains-mono";
-@import "@meowhx/ui/styles/tokens.css";
 @import "tailwindcss";
+@import "@meowhx/ui/tokens.css";
+
+@source "../../../../packages/ui/src";
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
 }
 body {
-  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 @media (prefers-reduced-motion: reduce) {
