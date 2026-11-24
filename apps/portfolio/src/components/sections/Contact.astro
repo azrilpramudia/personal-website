@@ -1,6 +1,6 @@
 ---
 import { site } from "@meowhx/ui/site";
-import Section from "../ui/Section.astro";
+import Container from "@meowhx/ui/Container.astro";
 
 const unfilled = [site.email, site.social.github, site.social.linkedin].some((v) => v.includes("ISI_"));
 if (import.meta.env.PROD && unfilled) {
@@ -8,36 +8,54 @@ if (import.meta.env.PROD && unfilled) {
 }
 
 const link =
-  "rounded-sm text-text-primary underline-offset-4 transition-colors duration-150 hover:text-accent-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+  "rounded-sm text-right text-text-primary underline-offset-4 transition-colors duration-150 hover:text-accent-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+const github = new URL(site.social.github);
+const linkedin = new URL(site.social.linkedin);
 
 const channels = [
   { label: "Email", text: site.email, href: `mailto:${site.email}?subject=Hello from your portfolio`, external: false },
-  { label: "GitHub", text: "GitHub profile", href: site.social.github, external: true },
-  { label: "LinkedIn", text: "LinkedIn profile", href: site.social.linkedin, external: true },
+  { label: "GitHub", text: `${github.host}${github.pathname.replace(/\/$/, "")}`, href: site.social.github, external: true },
+  { label: "LinkedIn", text: linkedin.pathname.replace(/^\/+|\/+$/g, ""), href: site.social.linkedin, external: true },
 ];
 ---
 
-<Section
-  id="contact"
-  title="Contact"
-  description="Questions, opportunities, or just want to talk networking? I'd be glad to hear from you."
->
-  <dl class="max-w-xl divide-y divide-border border-y border-border">
-    {
-      channels.map((c) => (
-        <div class="grid gap-1 py-4 sm:grid-cols-[120px_1fr]">
-          <dt class="text-sm text-text-muted">{c.label}</dt>
-          <dd class="text-sm">
-            <a
-              class={link}
-              href={c.href}
-              {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            >
-              {c.text}
-            </a>
-          </dd>
-        </div>
-      ))
-    }
-  </dl>
-</Section>
+<section id="contact" aria-labelledby="contact-title" class="scroll-mt-20 border-t border-border py-24">
+  <Container>
+    <div class="grid gap-10 md:grid-cols-2 md:gap-16">
+      <div>
+        <h2 id="contact-title" class="text-3xl font-semibold tracking-tight md:text-4xl">
+          Open to new opportunities.
+        </h2>
+        <p class="mt-3 max-w-[40ch] text-sm leading-6 text-text-secondary">
+          I’m a Network Engineering student interested in Linux, system administration, and DevOps.
+          I’m open to work and collaboration opportunities in these areas—feel free to reach out.
+        </p>
+        <a
+          href={`mailto:${site.email}?subject=Hello from your portfolio`}
+          class="mt-10 inline-flex min-h-11 items-center gap-2 rounded-md bg-white px-5 text-sm font-medium text-black transition-colors duration-150 hover:bg-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          Email me <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <dl class="self-start divide-y divide-border border-y border-border">
+        {
+          channels.map((c) => (
+            <div class="grid grid-cols-[5.5rem_1fr] items-center gap-4 py-4 sm:grid-cols-[7.5rem_1fr]">
+              <dt class="font-mono text-sm tracking-[0.12em] text-text-muted">{c.label}</dt>
+              <dd class="min-w-0 text-sm">
+                <a
+                  class={link}
+                  href={c.href}
+                  {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {c.text}
+                </a>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </Container>
+</section>
