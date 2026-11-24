@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+import type { Project } from "../../types";
+
+interface Props {
+  project: Project;
+}
+const { project: p } = Astro.props;
+
+const link =
+  "rounded-sm text-sm text-accent underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+---
+
+<article class="flex h-full flex-col rounded-lg border border-border p-6 transition-colors duration-200 hover:bg-surface">
+  {
+    p.image && (
+      <Image
+        src={p.image}
+        alt={p.imageAlt ?? ""}
+        loading="lazy"
+        class="mb-5 aspect-video w-full rounded-md border border-border object-cover"
+      />
+    )
+  }
+
+  <p class="font-mono text-xs text-text-muted">{p.category} · {p.status}</p>
+  <h3 class="mt-2 text-xl font-medium tracking-tight">{p.name}</h3>
+  <p class="mt-3 text-sm leading-6 text-text-secondary">{p.summary}</p>
+  <p class="mt-3 text-sm leading-6 text-text-secondary">
+    <span class="text-text-muted">My role: </span>{p.role}
+  </p>
+
+  <p class="mt-4 font-mono text-xs leading-5 text-text-muted">{p.tech.join(" · ")}</p>
+
+  <div class="mt-auto flex gap-5 pt-6">
+    {
+      p.repoUrl && (
+        <a class={link} href={p.repoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${p.name}: source repository`}>
+          Repository
+        </a>
+      )
+    }
+    {
+      p.demoUrl && (
+        <a class={link} href={p.demoUrl} target="_blank" rel="noopener noreferrer" aria-label={`${p.name}: live demo`}>
+          Live demo
+        </a>
+      )
+    }
+  </div>
+
+  {!p.published && <p class="mt-4 text-xs text-warning">Draft: tidak tampil di production</p>}
+</article>

@@ -4,6 +4,7 @@
   "scripts": {
     "dev:portfolio": "pnpm --filter @meowhx/portfolio dev",
     "dev:blog": "pnpm --filter @meowhx/blog dev",
+    "check:portfolio": "pnpm --filter @meowhx/portfolio check",
     "build": "pnpm -r build"
   }
 }

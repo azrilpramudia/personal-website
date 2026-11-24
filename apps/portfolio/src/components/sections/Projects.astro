@@ -1,0 +1,24 @@
+---
+import Section from "../ui/Section.astro";
+import ProjectCard from "../ui/ProjectCard.astro";
+import { projects } from "../../data/projects";
+
+const items = projects.filter((p) => p.published || import.meta.env.DEV);
+---
+
+<Section
+  id="projects"
+  title="Projects"
+  description="Hands-on work in networking, infrastructure, and backend development."
+  layout="stacked"
+>
+  {
+    items.length === 0 ? (
+      <p class="text-text-secondary">Projects are being documented and will be added soon.</p>
+    ) : (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((project) => <ProjectCard project={project} />)}
+      </div>
+    )
+  }
+</Section>
