@@ -2,6 +2,22 @@
 import Container from "./Container.astro";
 import { site } from "../site";
 
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  links?: FooterLink[];
+}
+
+const {
+  links = [
+    { label: "Portfolio", href: site.portfolioUrl },
+    { label: "Blog", href: site.blogUrl },
+  ],
+} = Astro.props;
+
 const year = new Date().getFullYear();
 const link =
   "rounded-sm text-sm text-text-secondary transition-colors duration-150 hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
@@ -12,8 +28,7 @@ const link =
     <p class="text-sm text-text-muted">© {year} {site.name}</p>
     <nav aria-label="Footer">
       <ul class="flex flex-wrap gap-x-6 gap-y-2">
-        <li><a class={link} href={site.portfolioUrl}>Portfolio</a></li>
-        <li><a class={link} href={site.blogUrl}>Blog</a></li>
+        {links.map((l) => <li><a class={link} href={l.href}>{l.label}</a></li>)}
         <li><a class={link} href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a class={link} href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
       </ul>

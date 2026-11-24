@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://blog.meowhx.my.id/sitemap-index.xml

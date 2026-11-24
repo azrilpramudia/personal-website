@@ -1,16 +1,39 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/layout/Navbar.astro";
-import CatLoader from "../components/ui/CatLoader.astro";
 import Hero from "../components/sections/Hero.astro";
 import About from "../components/sections/About.astro";
 import Experience from "../components/sections/Experience.astro";
 import Skills from "../components/sections/Skills.astro";
 import Projects from "../components/sections/Projects.astro";
+import BlogPreview from "../components/sections/BlogPreview.astro";
+import Contact from "../components/sections/Contact.astro";
+import SiteFooter from "@meowhx/ui/SiteFooter.astro";
+import { site } from "@meowhx/ui/site";
+
+const footerLinks = [
+  { label: "Home", href: "/#home" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Blog", href: site.blogUrl },
+  { label: "Contact", href: "/#contact" },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", name: site.name, url: site.portfolioUrl },
+    {
+      "@type": "Person",
+      name: "Azril",
+      url: site.portfolioUrl,
+      description: "Informatics Engineering student focused on Network Engineering.",
+      sameAs: [site.social.github, site.social.linkedin],
+    },
+  ],
+};
 ---
 
-<BaseLayout>
-  <CatLoader />
+<BaseLayout jsonLd={jsonLd}>
   <Navbar />
   <main id="main">
     <Hero />
@@ -18,5 +41,8 @@ import Projects from "../components/sections/Projects.astro";
     <Experience />
     <Skills />
     <Projects />
+    <BlogPreview />
+    <Contact />
   </main>
+  <SiteFooter links={footerLinks} />
 </BaseLayout>

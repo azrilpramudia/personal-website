@@ -1,0 +1,43 @@
+---
+import { site } from "@meowhx/ui/site";
+import Section from "../ui/Section.astro";
+
+const unfilled = [site.email, site.social.github, site.social.linkedin].some((v) => v.includes("ISI_"));
+if (import.meta.env.PROD && unfilled) {
+  throw new Error("Isi email dan link sosial di packages/ui/src/site.ts sebelum build production.");
+}
+
+const link =
+  "rounded-sm text-text-primary underline-offset-4 transition-colors duration-150 hover:text-accent-text hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+
+const channels = [
+  { label: "Email", text: site.email, href: `mailto:${site.email}?subject=Hello from your portfolio`, external: false },
+  { label: "GitHub", text: "GitHub profile", href: site.social.github, external: true },
+  { label: "LinkedIn", text: "LinkedIn profile", href: site.social.linkedin, external: true },
+];
+---
+
+<Section
+  id="contact"
+  title="Contact"
+  description="Questions, opportunities, or just want to talk networking? I'd be glad to hear from you."
+>
+  <dl class="max-w-xl divide-y divide-border border-y border-border">
+    {
+      channels.map((c) => (
+        <div class="grid gap-1 py-4 sm:grid-cols-[120px_1fr]">
+          <dt class="text-sm text-text-muted">{c.label}</dt>
+          <dd class="text-sm">
+            <a
+              class={link}
+              href={c.href}
+              {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              {c.text}
+            </a>
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+</Section>

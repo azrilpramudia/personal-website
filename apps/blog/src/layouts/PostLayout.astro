@@ -18,9 +18,26 @@ const minutes = readingTime(post.body ?? "");
 
 const focus =
   "rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { "@type": "Person", name: author },
+  mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
+};
 ---
 
-<BaseLayout title={title} description={description} type="article" publishedTime={pubDate}>
+<BaseLayout
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={pubDate}
+  jsonLd={jsonLd}
+>
   <article class="mx-auto w-full max-w-180 px-6 py-16 md:py-24">
     <header>
       <a href="/" class={`font-mono text-xs text-text-muted hover:text-text-primary ${focus}`}>← All articles</a>
@@ -53,7 +70,7 @@ const focus =
           <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1">
             {tags.map((tag) => (
               <li>
-                <a href={`/tags/${tag}/`} class={`font-mono text-xs text-accent hover:underline ${focus}`}>#{tag}</a>
+                <a href={`/tags/${tag}/`} class={`font-mono text-xs text-accent-text hover:underline ${focus}`}>#{tag}</a>
               </li>
             ))}
           </ul>

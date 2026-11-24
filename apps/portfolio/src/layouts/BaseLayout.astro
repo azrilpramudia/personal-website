@@ -8,12 +8,14 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
 const {
   title = `${site.name}`,
   description = "Informatics Engineering student focused on Network Engineering, with growing interests in Linux systems, System Administration, and DevOps.",
-  image = "/og-image.png",
+  image = "/favicon-512.png",
+  jsonLd,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -42,6 +44,14 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
+    {
+      jsonLd && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
+        />
+      )
+    }
   </head>
   <body>
     <a
