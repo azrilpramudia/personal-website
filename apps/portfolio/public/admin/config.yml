@@ -23,7 +23,7 @@ collections:
           name: description,
           label: Short description,
           widget: text,
-          pattern: ["^.{1,200}$", "Maksimal 200 karakter"],
+          pattern: ["^.{1,200}$", "Maximum 200 characters"],
         }
       - {
           name: pubDate,
@@ -81,14 +81,14 @@ collections:
       - { name: organization, label: Organization / Institution, widget: string }
       - { name: role, label: Role, widget: string }
       - name: type
-        label: Jenis
+        label: Type
         widget: select
         options: [Employment, Internship, Education, Training, Organization]
       - {
           name: start,
           label: "Start (YYYY-MM)",
           widget: string,
-          pattern: ['^\d{4}-\d{2}$', "Format YYYY-MM, mis. 2024-08"],
+          pattern: ['^\d{4}-\d{2}$', "Format YYYY-MM, e.g. 2024-08"],
         }
       - {
           name: end,
@@ -156,14 +156,14 @@ collections:
         }
       - {
           name: repoUrl,
-          label: URL repositori,
+          label: Repository URL,
           widget: string,
           required: false,
           pattern: ["^https?://", "Must start with http:// or https://"],
         }
       - {
           name: demoUrl,
-          label: URL demo,
+          label: Demo URL,
           widget: string,
           required: false,
           pattern: ["^https?://", "Must start with http:// or https://"],
