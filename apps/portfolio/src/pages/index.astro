@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/layout/Navbar.astro";
+import CatLoader from "../components/ui/CatLoader.astro";
 import Hero from "../components/sections/Hero.astro";
 import About from "../components/sections/About.astro";
 import Experience from "../components/sections/Experience.astro";
@@ -12,8 +13,6 @@ import SiteFooter from "@meowhx/ui/SiteFooter.astro";
 import { site } from "@meowhx/ui/site";
 
 const footerLinks = [
-  { label: "Home", href: "/#home" },
-  { label: "Projects", href: "/#projects" },
   { label: "Blog", href: site.blogUrl },
   { label: "Contact", href: "/#contact" },
 ];
@@ -24,7 +23,7 @@ const jsonLd = {
     { "@type": "WebSite", name: site.name, url: site.portfolioUrl },
     {
       "@type": "Person",
-      name: "Azril",
+      name: "Azril Pramudia",
       url: site.portfolioUrl,
       description: "Informatics Engineering student focused on Network Engineering.",
       sameAs: [site.social.github, site.social.linkedin],
@@ -34,6 +33,7 @@ const jsonLd = {
 ---
 
 <BaseLayout jsonLd={jsonLd}>
+  <CatLoader />
   <Navbar />
   <main id="main">
     <Hero />
