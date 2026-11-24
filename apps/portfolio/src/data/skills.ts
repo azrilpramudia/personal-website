@@ -1,6 +1,4 @@
-import type { SkillGroup } from "../types";
-
-export const skills: SkillGroup[] = [
+export const skills = [
   {
     category: "Network Engineering",
     items: [
