@@ -1,9 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Section from "../ui/Section.astro";
 import ProjectCard from "../ui/ProjectCard.astro";
-import { projects } from "../../data/projects";
 
-const items = projects.filter((p) => p.published || import.meta.env.DEV);
+const items = (await getCollection("projects", ({ data }) => data.published || import.meta.env.DEV))
+  .map((entry) => entry.data)
+  .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
 ---
 
 <Section

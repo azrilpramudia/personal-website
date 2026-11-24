@@ -1,11 +1,11 @@
 ---
+import { getCollection } from "astro:content";
 import Section from "../ui/Section.astro";
-import { experience } from "../../data/experience";
 import { formatMonth } from "../../lib/format";
 
-const items = experience
-  .filter((e) => e.published || import.meta.env.DEV)
-  .sort((a, b) => b.start.localeCompare(a.start)); 
+const items = (await getCollection("experience", ({ data }) => data.published || import.meta.env.DEV))
+  .map((entry) => entry.data)
+  .sort((a, b) => b.start.localeCompare(a.start));
 ---
 
 <Section id="experience" title="Experience">

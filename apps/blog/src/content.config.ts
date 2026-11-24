@@ -8,7 +8,10 @@ const posts = defineCollection({
     title: z.string(),
     description: z.string().max(200),
     pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
+    updatedDate: z.preprocess(
+      (v) => (v === "" || v === null ? undefined : v),
+      z.coerce.date().optional(),
+    ),
     author: z.string().default("Azril"),
     category: z.enum([
       "Networking",
