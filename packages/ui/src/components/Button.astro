@@ -3,9 +3,16 @@ interface Props {
   href: string;
   variant?: "primary" | "secondary";
   external?: boolean;
+  download?: boolean;
   class?: string;
 }
-const { href, variant = "primary", external = false, class: className = "" } = Astro.props;
+const {
+  href,
+  variant = "primary",
+  external = false,
+  download = false,
+  class: className = "",
+} = Astro.props;
 
 const base =
   "inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
@@ -20,6 +27,7 @@ const variants = {
   href={href}
   class:list={[base, variants[variant], className]}
   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+  {...(download ? { download: true } : {})}
 >
   <slot />
 </a>

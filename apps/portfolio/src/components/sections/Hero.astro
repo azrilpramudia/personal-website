@@ -2,15 +2,12 @@
 import Container from "@meowhx/ui/Container.astro";
 import Button from "@meowhx/ui/Button.astro";
 import { site } from "@meowhx/ui/site";
-
-const socialLink =
-  "rounded-sm text-sm text-text-secondary underline-offset-4 transition-colors duration-150 hover:text-text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 ---
 
 <section id="home" class="scroll-mt-20 py-24 md:py-36">
   <Container>
     <div class="max-w-3xl">
-      <p class="font-mono text-sm text-text-muted">Informatics Engineering student</p>
+      <p class="font-mono text-sm text-text-muted">Network Engineer</p>
 
       <h1
         class="mt-4 text-[clamp(2.75rem,6vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.045em]"
@@ -24,15 +21,39 @@ const socialLink =
       </p>
 
       <div class="mt-10 flex flex-wrap gap-3">
-        <Button href="#projects">View Projects</Button>
-        <Button href="#contact" variant="secondary">Contact Me</Button>
+        <Button href="/cv.json" download class="gap-2">
+          Hire Me
+          <svg
+            aria-hidden="true"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-7-7 7 7-7 7" />
+          </svg>
+        </Button>
+        <Button href="#contact" variant="secondary">Let's Talk</Button>
+        <a
+          href={site.blogUrl}
+          class="inline-flex min-h-11 items-center px-2 text-sm text-text-secondary underline underline-offset-4 transition-colors duration-150 hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Read the blog
+          <svg
+            aria-hidden="true"
+            class="ml-1 h-3.5 w-3.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.75"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" />
+          </svg>
+        </a>
       </div>
-
-      <ul class="mt-10 flex flex-wrap gap-x-6 gap-y-2">
-        <li><a class={socialLink} href={site.social.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
-        <li><a class={socialLink} href={site.social.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a class={socialLink} href={`mailto:${site.email}`}>Email</a></li>
-      </ul>
     </div>
   </Container>
 </section>
